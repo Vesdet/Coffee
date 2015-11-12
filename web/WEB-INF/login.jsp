@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Login</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -18,9 +18,9 @@
     <div class="row">
         <div class="col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="index.jsp" class="">Main page</a></li>
-                <li><a href="login.jsp" class="list-group-item-warning">Login</a></li>
-                <li><a href="buy.jsp" class="">Buy</a></li>
+                <li><a href="/" class="">Main page</a></li>
+                <li><a href="/login" class="list-group-item-warning">Login</a></li>
+                <li><a href="/buy" class="">Buy</a></li>
             </ul>
         </div>
 
