@@ -33,29 +33,13 @@ public class UsersDAO extends MySqlDAO {
     public boolean addRow(String name, String login, String password, int money, boolean isAdmin) {
         String sql = "INSERT INTO users("+columns+") " +
                 "VALUES('"+ name + "\','"+ login +"\','"+password+"\',"+money+","+isAdmin+")";
-        try (
-                Connection con = super.getConnection();
-                Statement st = con.createStatement()) {
-            st.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
+        return super.executeSqlRequest(sql);
     }
 
     @Override
     public boolean deleteRow(String login) {
         String sql = "DELETE FROM users WHERE title='"+ login +"\'";
-        try (
-                Connection con = super.getConnection();
-                Statement st = con.createStatement()) {
-            st.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
+        return super.executeSqlRequest(sql);
     }
 
     public boolean editPassword(String login, String oldPassword, String newPassword) {
@@ -79,7 +63,7 @@ public class UsersDAO extends MySqlDAO {
         return true;
     }
 
-    public boolean addMoney(String login, int money) {
+    public boolean changeMoney(String login, int money) {
         try (Connection con = super.getConnection();
              Statement st = con.createStatement()) {
 
@@ -122,6 +106,7 @@ public class UsersDAO extends MySqlDAO {
             user.setAdmin(resultSet.getBoolean("isAdmin"));
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
         return user;
     }

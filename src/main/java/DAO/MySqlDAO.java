@@ -3,6 +3,7 @@ package DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 /**
@@ -27,9 +28,21 @@ public abstract class MySqlDAO implements DAOFactory {
         return con;
     }
 
+    protected boolean executeSqlRequest(String sql) {
+        try (
+                Connection con = getConnection();
+                Statement st = con.createStatement()) {
+            st.execute(sql);
+        } catch (SQLException e) {
+          //  e.printStackTrace();
+            System.out.println("Кортеж с таким именем уже существует!!!");
+            return false;
+        }
+        return true;
+    }
+
     protected abstract <T> List<T> getTableList();
     protected abstract boolean deleteRow(String title);
-
 }
 /*InitialContext initContext = null;
         try {

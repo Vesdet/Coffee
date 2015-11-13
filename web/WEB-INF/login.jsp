@@ -30,19 +30,21 @@
                     <h3 class="panel-title">Sign In</h3>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal">
+                    <form action="/buy" class="form-horizontal">
                         <div class="form-group">
-                            <label for="inputLogin" class="col-lg-3 control-label">Login</label>
+                            <label class="col-lg-3 control-label">Login</label>
 
                             <div class="col-lg-8 has-warning">
-                                <input type="text" class="form-control" id="inputLogin" placeholder="Login">
+                                <input name="j_username" type="text" class="form-control"
+                                       placeholder="Login">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword" class="col-lg-3 control-label">Password</label>
+                            <label  class="col-lg-3 control-label">Password</label>
 
                             <div class="col-lg-8 has-warning">
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                <input name="j_password" type="password" class="form-control"
+                                        placeholder="Password">
                             </div>
                         </div>
                         <div class="form-group">

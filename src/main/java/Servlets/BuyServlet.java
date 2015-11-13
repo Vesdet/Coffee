@@ -1,8 +1,5 @@
 package Servlets;
 
-import DAO.Users.UserBean;
-import DAO.Users.UsersDAO;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,10 +19,7 @@ public class BuyServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UsersDAO dao = new UsersDAO();
-        UserBean x = dao.getUser("nubik");
+        request.getRequestDispatcher("/buy.jsp").forward(request, response);
 
-        request.setAttribute("user", x);
-        request.getRequestDispatcher("/WEB-INF/buy.jsp").forward(request, response);
     }
 }
