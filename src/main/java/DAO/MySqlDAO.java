@@ -1,10 +1,5 @@
 package DAO;
 
-import DAO.Users.UserBean;
-
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -33,6 +28,7 @@ public abstract class MySqlDAO implements DAOFactory {
     }
 
     protected abstract <T> List<T> getTableList();
+    protected abstract boolean deleteRow(String title);
 
 }
 /*InitialContext initContext = null;

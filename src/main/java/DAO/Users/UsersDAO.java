@@ -30,6 +30,55 @@ public class UsersDAO extends MySqlDAO {
         return list;
     }
 
+    public boolean addRow(String name, String login, String password, int money, boolean isAdmin) {
+        String sql = "INSERT INTO users("+columns+") " +
+                "VALUES('"+ name + "\','"+ login +"\','"+password+"\',"+money+","+isAdmin+")";
+        try (
+                Connection con = super.getConnection();
+                Statement st = con.createStatement()) {
+            st.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean deleteRow(String login) {
+        String sql = "DELETE FROM users WHERE title='"+ login +"\'";
+        try (
+                Connection con = super.getConnection();
+                Statement st = con.createStatement()) {
+            st.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean editPassword(String login, String oldPassword, String newPassword) {
+
+        try (Connection con = super.getConnection();
+             Statement st = con.createStatement()) {
+
+            String sql1 = "SELECT password FROM users WHERE login='" + login + "\'";
+            ResultSet resultSet = st.executeQuery(sql1);
+            resultSet.next();
+            if (resultSet.getString("password").equals(oldPassword)) {
+                String sql2 = "UPDATE users SET password='" + newPassword + "\' WHERE login='" + login + "\'";
+                st.execute(sql2);
+            }
+            else return false;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     public boolean addMoney(String login, int money) {
         try (Connection con = super.getConnection();
              Statement st = con.createStatement()) {
@@ -49,7 +98,7 @@ public class UsersDAO extends MySqlDAO {
     }
 
     public UserBean getUser(String login) {
-        UserBean user = new UserBean();
+        UserBean user;
         String sql = "SELECT * FROM Users WHERE login='" + login + "\'";
         try (Connection con = super.getConnection();
              Statement st = con.createStatement();
@@ -58,6 +107,7 @@ public class UsersDAO extends MySqlDAO {
             user = resultSetToUser(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
         return user;
     }
