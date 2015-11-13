@@ -6,3 +6,21 @@ body {
 .myback{
 	background-color: #151515;
 }
+
+.my-panel-body {
+	padding: 0px;
+}
+
+.my-badge {
+	float: right;
+	display: inline-block;
+	min-width: 10px;
+	padding: 5px 10px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #c67605;
+	line-height: 0.8;
+	vertical-align: middle;
+	white-space: nowrap;
+	text-align: center;
+}

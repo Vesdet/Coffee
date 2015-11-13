@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="user" scope="request" type="DAO.Users.UserBean"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Buy</title>
@@ -28,7 +30,43 @@
                 <li><a href="/buy" class="list-group-item-warning">Buy</a></li>
             </ul>
         </div>
+
+        <div class="col-lg-2">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Your account</h3>
+                </div>
+                <div class="my-panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="my-badge">${user.getName()}</span>
+                            Name
+                        </li>
+                        <li class="list-group-item">
+                            <span class="my-badge">${user.getLogin()}</span>
+                            Login
+                        </li>
+                        <li class="list-group-item">
+                            <span class="my-badge">${user.getMoney()}</span>
+                            Money
+                        </li>
+                        <li class="list-group-item">
+                            <span class="my-badge">
+                                <% if (user.isAdmin()) { %>
+                                Admin
+                                <% } else { %>
+                                Lalka
+                                <% } %>
+                            </span>
+                            Status
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </div>
+</div>
 </div>
 </body>
 </html>

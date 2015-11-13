@@ -24,7 +24,7 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DrinkDAO x = new DrinkDAO();
-        List<Drink> list = x.getDrinksList();
+        List<Drink> list = x.getTableList();
 
         request.setAttribute("drinkList", list);
         request.getRequestDispatcher("/index.jsp").forward(request, response);

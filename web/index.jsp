@@ -21,9 +21,7 @@
     <div class="row">
 
         <div class="col-lg-15">
-
             <h1 class="page-header"><i>ShinimaCoffee</i></h1>
-
         </div>
 
     </div>
