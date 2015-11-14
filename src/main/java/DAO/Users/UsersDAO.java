@@ -12,24 +12,6 @@ import java.util.List;
 public class UsersDAO extends MySqlDAO {
     private String columns = "name,login,password,money,isAdmin";
 
-    @Override
-    public List<UserBean> getTableList() {
-        List<UserBean> list = new ArrayList<>();
-        String sql = "SELECT " + columns + " FROM Users";
-        try (Connection con = super.getConnection();
-             Statement st = con.createStatement();
-             ResultSet resultSet = st.executeQuery(sql)) {
-
-            while (resultSet.next()) {
-                list.add(resultSetToUser(resultSet));
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
     public boolean addRow(String name, String login, String password, int money, boolean isAdmin) {
         String sql = "INSERT INTO users("+columns+") " +
                 "VALUES('"+ name + "\','"+ login +"\','"+password+"\',"+money+","+isAdmin+")";
@@ -43,12 +25,11 @@ public class UsersDAO extends MySqlDAO {
     }
 
     public boolean editPassword(String login, String oldPassword, String newPassword) {
-
+        String sql1 = "SELECT password FROM users WHERE login='" + login + "\'";
         try (Connection con = super.getConnection();
-             Statement st = con.createStatement()) {
+             Statement st = con.createStatement();
+             ResultSet resultSet = st.executeQuery(sql1)) {
 
-            String sql1 = "SELECT password FROM users WHERE login='" + login + "\'";
-            ResultSet resultSet = st.executeQuery(sql1);
             resultSet.next();
             if (resultSet.getString("password").equals(oldPassword)) {
                 String sql2 = "UPDATE users SET password='" + newPassword + "\' WHERE login='" + login + "\'";
@@ -88,7 +69,7 @@ public class UsersDAO extends MySqlDAO {
              Statement st = con.createStatement();
              ResultSet resultSet = st.executeQuery(sql)) {
             resultSet.next();
-            user = resultSetToUser(resultSet);
+            user = resultSetToBean(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -96,7 +77,8 @@ public class UsersDAO extends MySqlDAO {
         return user;
     }
 
-    private UserBean resultSetToUser(ResultSet resultSet) {
+    @Override
+    protected UserBean resultSetToBean(ResultSet resultSet) {
         UserBean user = new UserBean();
         try {
             user.setName(resultSet.getString("name"));
@@ -111,4 +93,8 @@ public class UsersDAO extends MySqlDAO {
         return user;
     }
 
+    @Override
+    protected String getTableName() {
+        return "Users";
+    }
 }

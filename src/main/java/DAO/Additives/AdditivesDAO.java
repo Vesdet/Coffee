@@ -6,39 +6,44 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Vesdet on 14.11.2015.
  */
 public class AdditivesDAO extends MySqlDAO {
-    private final String columns = "id,title,count,price";
+    private final String columns = "title,count,price";
 
-    @Override
-    protected  List<Additive> getTableList() {
-        List<Additive> list = new ArrayList<>();
-        try (
-                Connection con = super.getConnection();
-                Statement st = con.createStatement();
-                ResultSet resultSet = st.executeQuery("SELECT " + columns + " FROM additives")) {
+    public boolean addRow(String title, int count, int price) {
+        String sql = "INSERT INTO drinks("+columns+") " +
+                "VALUES('"+ title + "\',"+ count +","+price+")";
+        return super.executeSqlRequest(sql);
+    }
 
-            while(resultSet.next()) {
-                list.add(resultSetToAdditive(resultSet));
-            }
+    public boolean changeCount(String title, int count) {
+        String sql1 = "SELECT count FROM " + getTableName() + " WHERE title='" + title + "\'";
+        try (Connection con = super.getConnection();
+             Statement st = con.createStatement();
+             ResultSet resultSet = st.executeQuery(sql1)) {
+
+            resultSet.next();
+            count += resultSet.getInt("count");
+            String sql2 = "UPDATE " + getTableName() + " SET count=" + count + " WHERE title='" + title + "\'";
+            st.execute(sql2);
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return list;
+        return true;
     }
 
     @Override
-    protected boolean deleteRow(String title) {
+    public boolean deleteRow(String title) {
         String sql = "DELETE FROM additives WHERE title='"+title+"\'";
         return super.executeSqlRequest(sql);
     }
 
-    private Additive resultSetToAdditive(ResultSet resultSet) {
+    @Override
+    protected Additive resultSetToBean(ResultSet resultSet) {
         Additive additive = null;
         try {
             additive = new Additive();
@@ -50,5 +55,10 @@ public class AdditivesDAO extends MySqlDAO {
             e.printStackTrace();
         }
         return additive;
+    }
+
+    @Override
+    protected String getTableName() {
+        return "Additives";
     }
 }

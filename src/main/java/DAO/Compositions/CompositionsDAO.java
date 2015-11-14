@@ -15,23 +15,6 @@ import java.util.List;
 public class CompositionsDAO extends MySqlDAO {
     private String columns = "title, coffee, milk, water, chocolate, ice, cup, stick";
 
-    @Override
-    public  List<Composition> getTableList() {
-        List<Composition> list = new ArrayList<>();
-        try (
-                Connection con = super.getConnection();
-                Statement st = con.createStatement();
-                ResultSet resultSet = st.executeQuery("SELECT " + columns + " FROM compositions")) {
-
-            while(resultSet.next()) {
-                list.add(resultSetToComposition(resultSet));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
     public boolean addRow(Composition composition) {
         String sql = "INSERT INTO compositions("+columns+") " + "VALUES('"+
                 composition.getTitle() + "\',"+
@@ -51,7 +34,8 @@ public class CompositionsDAO extends MySqlDAO {
         return super.executeSqlRequest(sql);
     }
 
-    private Composition resultSetToComposition(ResultSet resultSet) {
+    @Override
+    protected Composition resultSetToBean(ResultSet resultSet) {
         Composition composition = null;
         try {
             composition = new Composition(resultSet.getString("title"),
@@ -66,5 +50,10 @@ public class CompositionsDAO extends MySqlDAO {
             e.printStackTrace();
         }
         return composition;
+    }
+
+    @Override
+    protected String getTableName() {
+        return "Compositions";
     }
 }

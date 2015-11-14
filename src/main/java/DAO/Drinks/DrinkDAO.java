@@ -12,23 +12,6 @@ import java.util.List;
 public class DrinkDAO extends MySqlDAO {
     private String  columns = "title, price, description";
 
-    @Override
-    public List<Drink> getTableList() {
-        List<Drink> list = new ArrayList<>();
-        try (
-             Connection con = super.getConnection();
-             Statement st = con.createStatement();
-             ResultSet resultSet = st.executeQuery("SELECT id," + columns + " FROM drinks")) {
-
-            while(resultSet.next()) {
-                list.add(resultSetToDrink(resultSet));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
     public boolean addRow(String title, int price, String description) {
         String sql = "INSERT INTO drinks("+columns+") " +
                 "VALUES('"+ title + "\',"+ price +",'"+description+"\')";
@@ -41,7 +24,8 @@ public class DrinkDAO extends MySqlDAO {
         return super.executeSqlRequest(sql);
     }
 
-    private Drink resultSetToDrink(ResultSet resultSet) {
+    @Override
+    protected Drink resultSetToBean(ResultSet resultSet) {
         Drink drink = new Drink();
         try {
             drink.setId(resultSet.getInt("id"));
@@ -52,5 +36,10 @@ public class DrinkDAO extends MySqlDAO {
             e.printStackTrace();
         }
         return drink;
+    }
+
+    @Override
+    protected String getTableName() {
+        return "Drinks";
     }
 }
