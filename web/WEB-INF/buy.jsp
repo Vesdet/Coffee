@@ -65,6 +65,8 @@
             </div>
         </div>
 
+        <a href="logout" class="btn btn-warning">Logout</a>
+
     </div>
 </div>
 </div>

@@ -30,7 +30,7 @@
                     <h3 class="panel-title">Sign In</h3>
                 </div>
                 <div class="panel-body">
-                    <form action="/buy" class="form-horizontal">
+                    <form action="j_security_check" method="post" class="form-horizontal">
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Login</label>
 

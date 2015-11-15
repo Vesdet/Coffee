@@ -36,9 +36,6 @@
         </div>
 
         <div class="col-lg-10">
-            <%--<a href="login.jsp" class="btn btn-warning">Sign In</a>--%>
-            <%--<a href="#" class="btn btn-warning">Sing Out</a>--%>
-            <%--<a href="#" class="btn btn-warning">Warning</a>--%>
 
             <div class="panel panel-warning">
                 <div class="panel-heading">
