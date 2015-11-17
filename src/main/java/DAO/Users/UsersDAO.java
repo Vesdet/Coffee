@@ -10,11 +10,11 @@ import java.util.List;
  * Created by Vesdet on 12.11.2015.
  */
 public class UsersDAO extends MySqlDAO {
-    private String columns = "name,login,password,money,isAdmin";
+    private String columns = "name,login,password,money,role";
 
-    public boolean addRow(String name, String login, String password, int money, boolean isAdmin) {
+    public boolean addRow(String name, String login, String password, int money, String role) {
         String sql = "INSERT INTO users("+columns+") " +
-                "VALUES('"+ name + "\','"+ login +"\','"+password+"\',"+money+","+isAdmin+")";
+                "VALUES('"+ name + "\','"+ login +"\','"+password+"\',"+money+",'"+role+"\')";
         return super.executeSqlRequest(sql);
     }
 
@@ -85,7 +85,7 @@ public class UsersDAO extends MySqlDAO {
             user.setLogin(resultSet.getString("login"));
             user.setPassword(resultSet.getString("password"));
             user.setMoney(resultSet.getInt("money"));
-            user.setAdmin(resultSet.getBoolean("isAdmin"));
+            user.setRole(resultSet.getString("role"));
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

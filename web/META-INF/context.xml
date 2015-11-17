@@ -1,0 +1,9 @@
+<Context>
+    <!-- NEW Connection Pool -->
+    <Resource name="jdbc/Coffee" auth="Container"
+              type="javax.sql.DataSource"
+              username="Vesdet"
+              password="1327"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost/Coffee"/>
+</Context>

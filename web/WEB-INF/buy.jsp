@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="user" scope="request" type="DAO.Users.UserBean"/>
+<jsp:useBean id="userBean" scope="request" type="DAO.Users.UserBean"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -26,7 +26,7 @@
         <div class="col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li><a href="/" class="">Main page</a></li>
-                <li><a href="/login" class="">Login</a></li>
+                <li><a href="/registration" class="">Registration</a></li>
                 <li><a href="/buy" class="list-group-item-warning">Buy</a></li>
             </ul>
         </div>
@@ -39,25 +39,19 @@
                 <div class="my-panel-body">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <span class="my-badge">${user.getName()}</span>
+                            <span class="my-badge">${userBean.getName()}</span>
                             Name
                         </li>
                         <li class="list-group-item">
-                            <span class="my-badge">${user.getLogin()}</span>
+                            <span class="my-badge">${userBean.getLogin()}</span>
                             Login
                         </li>
                         <li class="list-group-item">
-                            <span class="my-badge">${user.getMoney()}</span>
+                            <span class="my-badge">${userBean.getMoney()}</span>
                             Money
                         </li>
                         <li class="list-group-item">
-                            <span class="my-badge">
-                                <% if (user.isAdmin()) { %>
-                                Admin
-                                <% } else { %>
-                                Lalka
-                                <% } %>
-                            </span>
+                            <span class="my-badge">${userBean.getRole()}</span>
                             Status
                         </li>
                     </ul>

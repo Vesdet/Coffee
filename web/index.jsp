@@ -30,7 +30,7 @@
         <div class="col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li><a href="/" class="list-group-item-warning">Main page</a></li>
-                <li><a href="/login" class="">Login</a></li>
+                <li><a href="/registration" class="">Registration</a></li>
                 <li><a href="/buy" class="">Buy</a></li>
             </ul>
         </div>
@@ -42,6 +42,7 @@
                     <h3 class="panel-title">Hello,World</h3>
                 </div>
                 <div class="panel-body">
+                    ВАСЯ ПУПКИНВАСЯ ПУПКИН
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium aliquam aut beatae,
                     eos esse exercitationem fugiat fugit illo, laborum modi mollitia non odit, quasi quia quos tempora
                     tempore voluptates.

@@ -31,8 +31,8 @@
       <column id="11" parent="2" name="money">
         <data-type>int(11)</data-type>
       </column>
-      <column id="12" parent="2" name="isAdmin">
-        <data-type>tinyint(1)</data-type>
+      <column id="12" parent="2" name="role">
+        <data-type>varchar(20)</data-type>
       </column>
       <index id="13" parent="2" name="users_login_uindex">
         <columns>login</columns>

@@ -18,8 +18,10 @@ public class LogoutServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.removeAttribute("user");
-        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+        if (session!= null){
+            session.invalidate();
+        }
+        request.getRequestDispatcher("/").forward(request, response);
     }
 }

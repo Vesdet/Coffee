@@ -1,5 +1,8 @@
 package DAO;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,17 +17,28 @@ public abstract class MySqlDAO<T> implements DAOFactory {
     private static String url = "jdbc:mysql://localhost:3306/Coffee";
 
     protected Connection getConnection() throws SQLException {
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver").newInstance();
+//        } catch (InstantiationException e) {
+//            e.printStackTrace();
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        Connection con = DriverManager.getConnection(url, user, password);
+//        return con;
+        InitialContext initContext = null;
+        DataSource ds = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+            initContext = new InitialContext();
+            ds = (DataSource) initContext.lookup("java:comp/env/jdbc/Coffee");
+
+        } catch (NamingException e) {
             e.printStackTrace();
         }
-        Connection con = DriverManager.getConnection(url, user, password);
-        return con;
+        Connection conn = ds.getConnection();
+        return conn;
     }
 
     protected boolean executeSqlRequest(String sql) {

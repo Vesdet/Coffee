@@ -8,7 +8,7 @@ public class UserBean {
     private String login;
     private String password;
     private int money;
-    private boolean isAdmin;
+    private String role;
 
     public String getName() {
         return name;
@@ -42,12 +42,12 @@ public class UserBean {
         this.money = money;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public String getRole() {
+        return role;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setRole(String admin) {
+        role = admin;
     }
 
     @Override
@@ -57,7 +57,7 @@ public class UserBean {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", money=" + money +
-                ", isAdmin=" + isAdmin +
+                ", role=" + role +
                 '}';
     }
 }
