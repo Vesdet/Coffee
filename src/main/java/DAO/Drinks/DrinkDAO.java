@@ -18,6 +18,31 @@ public class DrinkDAO extends MySqlDAO {
         return super.executeSqlRequest(sql);
     }
 
+    public Drink getRow(int id) {
+        String sql = "SELECT * FROM drinks WHERE id="+id;
+        Drink drink = null;
+        try (
+                Connection con = super.getConnection();
+                Statement st = con.createStatement();
+                ResultSet resultSet = st.executeQuery(sql)) {
+            resultSet.next();
+            drink = resultSetToBean(resultSet);
+            return drink;
+        } catch (SQLException e) {
+            System.out.println("Нет такого id");
+        }
+        return null;
+    }
+
+    public boolean updateRow(int id, String title, int price, String description) {
+        String sql = "UPDATE " + getTableName() + " SET "+
+                "title='" + title +
+                "\',price=" + price +
+                ",description='" + description +
+                "\' WHERE id=" + id;
+        return super.executeSqlRequest(sql);
+    }
+
     @Override
     public boolean deleteRow(String title) {
         String sql = "DELETE FROM drinks WHERE title='"+title+"\'";

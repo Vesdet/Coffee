@@ -27,6 +27,6 @@ public class FillingServlet extends HttpServlet {
         List<Ingredient> list = x.getTableList();
 
         request.setAttribute("ingredients", list);
-        request.getRequestDispatcher("/WEB-INF/adminPage.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/filling.jsp").forward(request, response);
     }
 }

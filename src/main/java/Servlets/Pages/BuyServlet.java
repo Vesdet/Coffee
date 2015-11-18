@@ -32,9 +32,9 @@ public class BuyServlet extends HttpServlet {
 
         if (user != null) {
             request.setAttribute("userBean", user);
-            request.getRequestDispatcher("/WEB-INF/buy.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/buy.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("/error.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/error/error.jsp").forward(request, response);
         }
     }
 }

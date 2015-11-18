@@ -11,8 +11,8 @@
 <html>
 <head>
     <title>Filling</title>
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="../../../css/bootstrap.css" rel="stylesheet">
+    <link href="../../../css/style.css" rel="stylesheet">
 </head>
 <body>
 <div class="container myback">
@@ -29,7 +29,61 @@
                 <li><a href="/registration" class="">Registration</a></li>
                 <li><a href="/buy" class="">Buy</a></li>
                 <li><a href="/filling" class="list-group-item-warning">Filling</a></li>
+                <li><a href="/edit" class="">EditDrinks</a></li>
             </ul>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Add Drink</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="/addDrink" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">Title</label>
+
+                            <div class="col-lg-8 has-warning">
+                                <input type="text" class="form-control" name="addTitle" placeholder="Title">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">Price</label>
+
+                            <div class="col-lg-8 has-warning">
+                                <input type="number" class="form-control" name="addPrice" placeholder="Price">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">Description</label>
+
+                            <div class="col-lg-8 has-warning">
+                                <textarea class="form-control" rows="3" id="textArea" name="addDescription" placeholder="Description"></textarea>
+                                <%--<input type="text" class="form-control" name="addPrice" placeholder="Description">--%>
+                            </div>
+                        </div>
+                        <c:forEach var="ingredient" items="${ingredients}">
+                            <div class="form-group">
+                                <label class="col-lg-4 control-label">${ingredient.getTitle()}</label>
+
+                                <div class="col-lg-5">
+                                    <select class="form-control col-lg-offset-1" name="<c:out value="add${ingredient.getTitle()}"/>">
+                                        <option>0</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </c:forEach>
+                        <div class="form-group">
+                            <div class="col-lg-8 col-lg-offset-1">
+                                <button type="submit" class="btn btn-warning">Add Drink!</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <div class="col-lg-3">

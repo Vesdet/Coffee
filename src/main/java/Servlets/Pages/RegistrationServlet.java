@@ -25,10 +25,11 @@ public class RegistrationServlet extends HttpServlet {
         if (!userName.equals("") || !userName.equals("") || !userPassword.equals(""))
             dao.addRow(userName, userLogin, userPassword, 0, "lalka");
 
-        request.getRequestDispatcher("/WEB-INF/error/error.jsp").forward(request, response);
+        // TODO не на error кидать надо
+        request.getRequestDispatcher("/WEB-INF/jsp/error/error.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/registration.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp").forward(request, response);
     }
 }

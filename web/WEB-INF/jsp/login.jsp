@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Login</title>
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -21,6 +21,8 @@
                 <li><a href="/" class="">Main page</a></li>
                 <li><a href="/registration" class="">Registration</a></li>
                 <li><a href="/buy" class="">Buy</a></li>
+                <li><a href="/filling" class="">Filling</a></li>
+                <li><a href="/edit" class="">EditDrinks</a></li>
             </ul>
         </div>
 
