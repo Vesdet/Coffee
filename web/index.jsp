@@ -32,6 +32,7 @@
                 <li><a href="/" class="list-group-item-warning">Main page</a></li>
                 <li><a href="/registration" class="">Registration</a></li>
                 <li><a href="/buy" class="">Buy</a></li>
+                <li><a href="/filling" class="">Filling</a></li>
             </ul>
         </div>
 

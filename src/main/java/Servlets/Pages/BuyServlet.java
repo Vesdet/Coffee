@@ -1,4 +1,4 @@
-package Servlets;
+package Servlets.Pages;
 
 import DAO.Users.UserBean;
 import DAO.Users.UsersDAO;
@@ -17,7 +17,7 @@ import java.io.IOException;
  * Created by Vesdet on 12.11.2015.
  */
 @WebServlet(name = "buy", urlPatterns = "/buy")
-@ServletSecurity (@HttpConstraint(rolesAllowed = {"admin"}))
+@ServletSecurity (@HttpConstraint(rolesAllowed = {"lalka"}))
 public class BuyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

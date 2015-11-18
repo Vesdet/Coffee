@@ -1,4 +1,4 @@
-package Servlets;
+package Servlets.Pages;
 
 import DAO.Users.UsersDAO;
 
@@ -22,7 +22,8 @@ public class RegistrationServlet extends HttpServlet {
         String userPassword = request.getParameter("regPassword");
 
         UsersDAO dao = new UsersDAO();
-        dao.addRow(userName, userLogin, userPassword, 0, "lalka");
+        if (!userName.equals("") || !userName.equals("") || !userPassword.equals(""))
+            dao.addRow(userName, userLogin, userPassword, 0, "lalka");
 
         request.getRequestDispatcher("/WEB-INF/error/error.jsp").forward(request, response);
     }

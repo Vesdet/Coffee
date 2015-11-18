@@ -46,15 +46,15 @@ public class IngredientsDAO extends MySqlDAO {
 
     @Override
     protected Ingredient resultSetToBean(ResultSet resultSet) {
-        Ingredient drink = new Ingredient();
+        Ingredient ingredient = null;
         try {
-            Ingredient ingredient = new Ingredient();
+            ingredient = new Ingredient();
             ingredient.setTitle(resultSet.getString("title"));
             ingredient.setCount(resultSet.getInt("count"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return drink;
+        return ingredient;
     }
 
     @Override
