@@ -44,8 +44,8 @@ public class DrinkDAO extends MySqlDAO {
     }
 
     @Override
-    public boolean deleteRow(String title) {
-        String sql = "DELETE FROM drinks WHERE title='"+title+"\'";
+    public boolean deleteRow(String id) {
+        String sql = "DELETE FROM drinks WHERE id="+id;
         return super.executeSqlRequest(sql);
     }
 
