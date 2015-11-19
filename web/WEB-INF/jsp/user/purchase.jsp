@@ -1,14 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: Vesdet
-  Date: 19.11.2015
-  Time: 23:51
+  Date: 20.11.2015
+  Time: 0:54
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="userBean" scope="session" type="DAO.Users.UserBean"/>
 <jsp:useBean id="drink" scope="session" type="DAO.Drinks.Drink"/>
-<jsp:useBean id="total" scope="session" type="java.lang.Integer"/>
 <jsp:useBean id="additivesList" scope="session" type="java.util.List"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -40,7 +39,7 @@
         <div class="col-lg-5">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Buy Drink</h3>
+                    <h3 class="panel-title">You bought</h3>
                 </div>
                 <div class="my-panel-body">
                     <ul class="list-group">
@@ -48,21 +47,16 @@
                             <span class="my-badge">${drink.price}</span>
                             ${drink.title}
                         </li>
+                        <hr/>
                         <c:forEach var="additive" items="${additivesList}">
                             <li class="list-group-item">
                                 <span class="my-badge">${additive.getPrice()}</span>
                                     ${additive.getTitle()}
                             </li>
                         </c:forEach>
-                        <hr/>
-                        <li class="list-group-item">
-                            <span class="my-badge">${total}</span>
-                            Total:
-                        </li>
                     </ul>
                     <div class="col-lg-8 col-lg-offset-2">
-                        <a href="confirm" class="btn btn-warning">Buy Drink!</a>
-                        <a href="profile" class="btn btn-warning">Cancel</a>
+                        <a href="profile" class="btn btn-warning">Ok!</a>
                     </div>
                 </div>
             </div>

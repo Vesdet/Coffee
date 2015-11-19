@@ -29,6 +29,7 @@ public class BuyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         int totalCost = 0;
+        HttpSession session = request.getSession();
         String additiveTitle1 = request.getParameter("additiveTitle1");
         String additiveTitle2 = request.getParameter("additiveTitle2");
 
@@ -44,14 +45,16 @@ public class BuyServlet extends HttpServlet {
             list.add(add2);
             totalCost += add2.getPrice();
         }
-        request.setAttribute("additivesList", list);
+        session.setAttribute("additivesList", list);
 
         int id = Integer.valueOf(request.getParameter("id"));
         DrinkDAO drinkDAO = new DrinkDAO();
         Drink drink = drinkDAO.getRow(id);
         totalCost += drink.getPrice();
-        request.setAttribute("drink", drink);
-        request.setAttribute("total", totalCost);
+        session.setAttribute("drink", drink);
+        session.setAttribute("total", totalCost);
+//        request.setAttribute("drink", drink);
+//        request.setAttribute("total", totalCost);
         request.getRequestDispatcher("/WEB-INF/jsp/user/confirm.jsp").forward(request, response);
     }
 

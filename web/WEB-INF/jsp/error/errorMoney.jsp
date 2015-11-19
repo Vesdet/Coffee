@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Vesdet
-  Date: 16.11.2015
-  Time: 22:13
+  Date: 20.11.2015
+  Time: 0:47
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -27,16 +27,13 @@
                     <h3 class="panel-title">Error!!</h3>
                 </div>
                 <div class="panel-body">
-                    Incorrect user name or password
+                    У вас на счёте недостаточно средств для совершения покупки!
                 </div>
             </div>
         </div>
 
         <a href="/" class="btn btn-warning">Go to Main Page</a>
-        <a href="/registration" class="btn btn-warning">Registration</a>
     </div>
 </div>
-
-
 </body>
 </html>
