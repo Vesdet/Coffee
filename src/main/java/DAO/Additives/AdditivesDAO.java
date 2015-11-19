@@ -36,6 +36,22 @@ public class AdditivesDAO extends MySqlDAO {
         return true;
     }
 
+    public Additive getRow(String title) {
+        String sql = "SELECT * FROM additives WHERE title='"+title+"\'";
+        Additive additive = null;
+        try (
+                Connection con = super.getConnection();
+                Statement st = con.createStatement();
+                ResultSet resultSet = st.executeQuery(sql)) {
+            resultSet.next();
+            additive = resultSetToBean(resultSet);
+            return additive;
+        } catch (SQLException e) {
+            System.out.println("Нет такого id");
+        }
+        return null;
+    }
+
     @Override
     public boolean deleteRow(String id) {
         String sql = "DELETE FROM additives WHERE id="+id;

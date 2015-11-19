@@ -26,18 +26,21 @@
         <div class="col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li><a href="/" class="">Main page</a></li>
-                <li><a href="/registration" class="">Registration</a></li>
-                <li><a href="/buy" class="">Buy</a></li>
-                <li><a href="/filling" class="list-group-item-warning">Admin</a></li>
+                <li><a href="registration" class="">Registration</a></li>
+                <li><a href="profile" class="">Profile</a></li>
+                <li><a href="filling" class="list-group-item-warning">Admin</a></li>
+                <hr/>
+                <li><a href="mainlogin" class="">Login</a></li>
+                <li><a href="logout" class="">Logout</a></li>
             </ul>
         </div>
 
         <div class="col-lg-10">
             <div class="btn-group btn-group-justified">
-                <a href="/new" class="btn btn-default">New</a>
+                <a href="new" class="btn btn-default">New</a>
                 <a href="#" class="btn btn-warning">Edit Drinks</a>
-                <a href="/additives" class="btn btn-default">Edit Additives</a>
-                <a href="/filling" class="btn btn-default">Filling</a>
+                <a href="additives" class="btn btn-default">Edit Additives</a>
+                <a href="filling" class="btn btn-default">Filling</a>
             </div>
         </div>
 

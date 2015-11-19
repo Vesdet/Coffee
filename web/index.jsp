@@ -30,9 +30,12 @@
         <div class="col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li><a href="/" class="list-group-item-warning">Main page</a></li>
-                <li><a href="/registration" class="">Registration</a></li>
-                <li><a href="/buy" class="">Buy</a></li>
-                <li><a href="/filling" class="">Admin</a></li>
+                <li><a href="registration" class="">Registration</a></li>
+                <li><a href="profile" class="">Profile</a></li>
+                <li><a href="filling" class="">Admin</a></li>
+                <hr/>
+                <li><a href="mainlogin" class="">Login</a></li>
+                <li><a href="logout" class="">Logout</a></li>
             </ul>
         </div>
 
@@ -40,40 +43,40 @@
 
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Hello,World</h3>
+                    <h3 class="panel-title">Hello, my dear friend!</h3>
                 </div>
                 <div class="panel-body">
-                    ВАСЯ ПУПКИНВАСЯ ПУПКИН
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium aliquam aut beatae,
-                    eos esse exercitationem fugiat fugit illo, laborum modi mollitia non odit, quasi quia quos tempora
-                    tempore voluptates.
+                    ТУТ МОГЛА БЫ БЫТЬ ВАША РЕКЛАМА
+                    <hr/>
+                    <br/>
+                    А также много-много бесполезной Shinim'ы!!
                 </div>
             </div>
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                <tr class="warning">
-                    <th>#</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="drink" items="${drinkList}">
-                    <tr>
-                        <td>${drink.getId()}</td>
-                        <td>${drink.getTitle()}</td>
-                        <td>${drink.getPrice()}</td>
-                        <td>${drink.getDescription()}</td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+            <%--<table class="table table-striped table-hover table-bordered">--%>
+                <%--<thead>--%>
+                <%--<tr class="warning">--%>
+                    <%--<th>#</th>--%>
+                    <%--<th>Title</th>--%>
+                    <%--<th>Price</th>--%>
+                    <%--<th>Description</th>--%>
+                <%--</tr>--%>
+                <%--</thead>--%>
+                <%--<tbody>--%>
+                <%--<c:forEach var="drink" items="${drinkList}">--%>
+                    <%--<tr>--%>
+                        <%--<td>${drink.getId()}</td>--%>
+                        <%--<td>${drink.getTitle()}</td>--%>
+                        <%--<td>${drink.getPrice()}</td>--%>
+                        <%--<td>${drink.getDescription()}</td>--%>
+                    <%--</tr>--%>
+                <%--</c:forEach>--%>
+                <%--</tbody>--%>
+            <%--</table>--%>
 
-            <div class="form-group has-warning">
-                <label class="control-label" for="inputWarning">Input warning</label>
-                <input type="text" class="form-control" id="inputWarning">
-            </div>
+            <%--<div class="form-group has-warning">--%>
+                <%--<label class="control-label" for="inputWarning">Input warning</label>--%>
+                <%--<input type="text" class="form-control" id="inputWarning">--%>
+            <%--</div>--%>
 
         </div>
     </div>

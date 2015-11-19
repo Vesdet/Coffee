@@ -1,5 +1,9 @@
 package Servlets.Pages;
 
+import DAO.Additives.Additive;
+import DAO.Additives.AdditivesDAO;
+import DAO.Drinks.Drink;
+import DAO.Drinks.DrinkDAO;
 import DAO.Users.UserBean;
 import DAO.Users.UsersDAO;
 
@@ -12,29 +16,67 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Vesdet on 12.11.2015.
  */
 @WebServlet(name = "buy", urlPatterns = "/buy")
-@ServletSecurity (@HttpConstraint(rolesAllowed = {"lalka"}))
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"lalka"}))
 public class BuyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        int totalCost = 0;
+        String additiveTitle1 = request.getParameter("additiveTitle1");
+        String additiveTitle2 = request.getParameter("additiveTitle2");
+
+        AdditivesDAO dao = new AdditivesDAO();
+        List<Additive> list = new ArrayList<>();
+        if (!additiveTitle1.equals("Without additive")) {
+            Additive add1 = dao.getRow(additiveTitle1);
+            list.add(add1);
+            totalCost += add1.getPrice();
+        }
+        if (!additiveTitle2.equals("Without additive")) {
+            Additive add2 = dao.getRow(additiveTitle2);
+            list.add(add2);
+            totalCost += add2.getPrice();
+        }
+        request.setAttribute("additivesList", list);
+
+        int id = Integer.valueOf(request.getParameter("id"));
+        DrinkDAO drinkDAO = new DrinkDAO();
+        Drink drink = drinkDAO.getRow(id);
+        totalCost += drink.getPrice();
+        request.setAttribute("drink", drink);
+        request.setAttribute("total", totalCost);
+        request.getRequestDispatcher("/WEB-INF/jsp/user/confirm.jsp").forward(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String userName = request.getUserPrincipal().getName();
-        UsersDAO dao = new UsersDAO();
-        UserBean user = dao.getUser(userName);
+        HttpSession session = request.getSession();
 
-        if (user != null) {
-            request.setAttribute("userBean", user);
-            request.getRequestDispatcher("/WEB-INF/jsp/buy.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("/WEB-INF/jsp/error/error.jsp").forward(request, response);
+        if (session.getAttribute("userBean") == null) {
+            UsersDAO dao = new UsersDAO();
+            String userName = request.getUserPrincipal().getName();
+            UserBean user = dao.getUser(userName);
+            session.setAttribute("userBean", user);
         }
+        if (session.getAttribute("additives") == null) {
+            AdditivesDAO additivesDAO = new AdditivesDAO();
+            List<Additive> list = additivesDAO.getTableList();
+            session.setAttribute("additives", list);
+        }
+
+        int id = Integer.valueOf(request.getParameter("id"));
+        DrinkDAO drinkDAO = new DrinkDAO();
+        Drink drink = drinkDAO.getRow(id);
+
+        request.setAttribute("drink", drink);
+        request.getRequestDispatcher("/WEB-INF/jsp/user/buy.jsp").forward(request, response);
     }
 }

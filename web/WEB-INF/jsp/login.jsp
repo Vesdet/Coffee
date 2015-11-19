@@ -19,9 +19,12 @@
         <div class="col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li><a href="/" class="">Main page</a></li>
-                <li><a href="/registration" class="">Registration</a></li>
-                <li><a href="/buy" class="">Buy</a></li>
-                <li><a href="/filling" class="">Admin</a></li>
+                <li><a href="registration" class="">Registration</a></li>
+                <li><a href="profile" class="">Profile</a></li>
+                <li><a href="filling" class="">Admin</a></li>
+                <hr/>
+                <li><a href="mainlogin" class="list-group-item-warning">Login</a></li>
+                <li><a href="logout" class="">Logout</a></li>
             </ul>
         </div>
 
@@ -57,8 +60,6 @@
                 </div>
             </div>
         </div>
-
-
 
     </div>
 </div>

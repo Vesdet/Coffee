@@ -26,9 +26,12 @@
         <div class="col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li><a href="/" class="">Main page</a></li>
-                <li><a href="/registration" class="list-group-item-warning">Registration</a></li>
-                <li><a href="/buy" class="">Buy</a></li>
-                <li><a href="/filling" class="">Admin</a></li>
+                <li><a href="registration" class="list-group-item-warning">Registration</a></li>
+                <li><a href="profile" class="">Profile</a></li>
+                <li><a href="filling" class="">Admin</a></li>
+                <hr/>
+                <li><a href="mainlogin" class="">Login</a></li>
+                <li><a href="logout" class="">Logout</a></li>
             </ul>
         </div>
         <%--col-lg-offset-1--%>
@@ -38,7 +41,7 @@
                     <h3 class="panel-title">Registration</h3>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="/registration" method="post">
+                    <form class="form-horizontal" action="registration" method="post">
                         <div class="form-group">
                             <label class="col-lg-2 control-label">Name</label>
 
@@ -69,8 +72,6 @@
                 </div>
             </div>
         </div>
-
-        <a href="logout" class="btn btn-warning">Logout</a>
 
     </div>
 </div>
