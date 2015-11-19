@@ -28,8 +28,7 @@
                 <li><a href="/" class="">Main page</a></li>
                 <li><a href="/registration" class="list-group-item-warning">Registration</a></li>
                 <li><a href="/buy" class="">Buy</a></li>
-                <li><a href="/filling" class="">Filling</a></li>
-                <li><a href="/edit" class="">EditDrinks</a></li>
+                <li><a href="/filling" class="">Admin</a></li>
             </ul>
         </div>
         <%--col-lg-offset-1--%>

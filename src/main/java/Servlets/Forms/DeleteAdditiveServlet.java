@@ -1,5 +1,6 @@
 package Servlets.Forms;
 
+import DAO.Additives.AdditivesDAO;
 import DAO.Drinks.DrinkDAO;
 
 import javax.servlet.ServletException;
@@ -14,17 +15,16 @@ import java.io.IOException;
 /**
  * Created by Vesdet on 19.11.2015.
  */
-@WebServlet(name = "DeleteDrinkServlet", urlPatterns = "/delete")
+@WebServlet(name = "DeleteAdditiveServlet", urlPatterns = "/additivedel")
 @ServletSecurity(@HttpConstraint(rolesAllowed = {"admin"}))
-public class DeleteDrinkServlet extends HttpServlet {
+public class DeleteAdditiveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        DrinkDAO dao = new DrinkDAO();
+        AdditivesDAO dao = new AdditivesDAO();
         dao.deleteRow(request.getParameter("id"));
-        response.sendRedirect("/edit");
+        response.sendRedirect("/additives");
     }
 }

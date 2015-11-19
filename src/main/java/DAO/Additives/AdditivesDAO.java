@@ -14,7 +14,7 @@ public class AdditivesDAO extends MySqlDAO {
     private final String columns = "title,count,price";
 
     public boolean addRow(String title, int count, int price) {
-        String sql = "INSERT INTO drinks("+columns+") " +
+        String sql = "INSERT INTO " + getTableName() + "("+columns+") " +
                 "VALUES('"+ title + "\',"+ count +","+price+")";
         return super.executeSqlRequest(sql);
     }
@@ -37,8 +37,8 @@ public class AdditivesDAO extends MySqlDAO {
     }
 
     @Override
-    public boolean deleteRow(String title) {
-        String sql = "DELETE FROM additives WHERE title='"+title+"\'";
+    public boolean deleteRow(String id) {
+        String sql = "DELETE FROM additives WHERE id="+id;
         return super.executeSqlRequest(sql);
     }
 

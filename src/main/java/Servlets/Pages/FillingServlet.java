@@ -1,5 +1,7 @@
 package Servlets.Pages;
 
+import DAO.Additives.Additive;
+import DAO.Additives.AdditivesDAO;
 import DAO.Ingredients.Ingredient;
 import DAO.Ingredients.IngredientsDAO;
 
@@ -26,7 +28,11 @@ public class FillingServlet extends HttpServlet {
         IngredientsDAO x = new IngredientsDAO();
         List<Ingredient> list = x.getTableList();
 
+        AdditivesDAO y = new AdditivesDAO();
+        List<Additive> list2 = y.getTableList();
+
         request.setAttribute("ingredients", list);
+        request.setAttribute("additives", list2);
         request.getRequestDispatcher("/WEB-INF/jsp/admin/filling.jsp").forward(request, response);
     }
 }

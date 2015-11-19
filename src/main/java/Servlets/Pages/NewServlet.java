@@ -1,6 +1,7 @@
-package Servlets.Forms;
+package Servlets.Pages;
 
-import DAO.Drinks.DrinkDAO;
+import DAO.Ingredients.Ingredient;
+import DAO.Ingredients.IngredientsDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
@@ -10,21 +11,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by Vesdet on 19.11.2015.
  */
-@WebServlet(name = "DeleteDrinkServlet", urlPatterns = "/delete")
+@WebServlet(name = "NewServlet", urlPatterns = "/new")
 @ServletSecurity(@HttpConstraint(rolesAllowed = {"admin"}))
-public class DeleteDrinkServlet extends HttpServlet {
+public class NewServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        IngredientsDAO x = new IngredientsDAO();
+        List<Ingredient> list = x.getTableList();
 
-        DrinkDAO dao = new DrinkDAO();
-        dao.deleteRow(request.getParameter("id"));
-        response.sendRedirect("/edit");
+        request.setAttribute("ingredients", list);
+        request.getRequestDispatcher("/WEB-INF/jsp/admin/new.jsp").forward(request, response);
     }
 }

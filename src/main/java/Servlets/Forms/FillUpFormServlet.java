@@ -1,8 +1,11 @@
 package Servlets.Forms;
 
+import DAO.Additives.AdditivesDAO;
 import DAO.Ingredients.IngredientsDAO;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +16,7 @@ import java.io.IOException;
  * Created by Vesdet on 19.11.2015.
  */
 @WebServlet(name = "FillUpFormServlet", urlPatterns = "/fillUp")
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"admin"}))
 public class FillUpFormServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -29,6 +33,11 @@ public class FillUpFormServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        AdditivesDAO dao = new AdditivesDAO();
+        dao.changeCount(request.getParameter("additiveTitle"),
+                Integer.valueOf(request.getParameter("additiveCount")));
 
+        response.sendRedirect("/filling");
     }
 }
