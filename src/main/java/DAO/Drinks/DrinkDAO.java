@@ -1,6 +1,7 @@
 package DAO.Drinks;
 
 import DAO.MySqlDAO;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
  * Created by Vesdet on 12.11.2015.
  */
 public class DrinkDAO extends MySqlDAO {
+    private static final Logger log = Logger.getLogger(DrinkDAO.class);
     private String  columns = "title, price, description";
 
     public boolean addRow(String title, int price, String description) {
@@ -29,7 +31,7 @@ public class DrinkDAO extends MySqlDAO {
             drink = resultSetToBean(resultSet);
             return drink;
         } catch (SQLException e) {
-            System.out.println("Нет такого id");
+             log.error("This ID don't found", e);
         }
         return null;
     }
@@ -58,7 +60,7 @@ public class DrinkDAO extends MySqlDAO {
             drink.setPrice(resultSet.getInt("price"));
             drink.setDescription(resultSet.getString("description"));
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("This attribute don't found", e);
         }
         return drink;
     }

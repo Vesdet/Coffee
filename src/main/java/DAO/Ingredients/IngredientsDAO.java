@@ -2,6 +2,7 @@ package DAO.Ingredients;
 
 import DAO.Compositions.Composition;
 import DAO.MySqlDAO;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by Vesdet on 14.11.2015.
  */
 public class IngredientsDAO extends MySqlDAO {
+    private static final Logger log = Logger.getLogger(IngredientsDAO.class);
 
     public boolean changeCount(String title, int count) {
         String sql1 = "SELECT count FROM " + getTableName() + " WHERE title='" + title + "\'";
@@ -26,7 +28,7 @@ public class IngredientsDAO extends MySqlDAO {
             String sql2 = "UPDATE " + getTableName() + " SET count=" + count + " WHERE title='" + title + "\'";
             st.execute(sql2);
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error SQL request", e);
             return false;
         }
         return true;
@@ -52,7 +54,7 @@ public class IngredientsDAO extends MySqlDAO {
             ingredient.setTitle(resultSet.getString("title"));
             ingredient.setCount(resultSet.getInt("count"));
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("This attribute don't found", e);
         }
         return ingredient;
     }

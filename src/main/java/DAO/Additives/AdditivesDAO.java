@@ -1,6 +1,7 @@
 package DAO.Additives;
 
 import DAO.MySqlDAO;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,6 +12,7 @@ import java.sql.Statement;
  * Created by Vesdet on 14.11.2015.
  */
 public class AdditivesDAO extends MySqlDAO {
+    private static final Logger log = Logger.getLogger(AdditivesDAO.class);
     private final String columns = "title,count,price";
 
     public boolean addRow(String title, int count, int price) {
@@ -30,7 +32,7 @@ public class AdditivesDAO extends MySqlDAO {
             String sql2 = "UPDATE " + getTableName() + " SET count=" + count + " WHERE title='" + title + "\'";
             st.execute(sql2);
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error SQL request", e);
             return false;
         }
         return true;
@@ -47,7 +49,7 @@ public class AdditivesDAO extends MySqlDAO {
             additive = resultSetToBean(resultSet);
             return additive;
         } catch (SQLException e) {
-            System.out.println("Нет такого id");
+            log.error("This ID don't found", e);
         }
         return null;
     }
@@ -68,7 +70,7 @@ public class AdditivesDAO extends MySqlDAO {
             additive.setCount(resultSet.getInt("count"));
             additive.setPrice(resultSet.getInt("price"));
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("This attribute don't found", e);
         }
         return additive;
     }

@@ -1,5 +1,7 @@
 package DAO;
 
+import org.apache.log4j.Logger;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -11,6 +13,8 @@ import java.util.List;
  * Created by Vesdet on 13.11.2015.
  */
 public abstract class MySqlDAO<T> implements DAOFactory {
+
+    private static final Logger log = Logger.getLogger(MySqlDAO.class);
 
     private static String user = "Vesdet";
     private static String password = "1327";
@@ -35,7 +39,7 @@ public abstract class MySqlDAO<T> implements DAOFactory {
             ds = (DataSource) initContext.lookup("java:comp/env/jdbc/Coffee");
 
         } catch (NamingException e) {
-            e.printStackTrace();
+            log.error("Error DataSourse", e);
         }
         Connection conn = ds.getConnection();
         return conn;
@@ -47,7 +51,7 @@ public abstract class MySqlDAO<T> implements DAOFactory {
                 Statement st = con.createStatement()) {
             st.execute(sql);
         } catch (SQLException e) {
-            System.out.println("Кортеж с таким именем уже существует!!!");
+            log.error("Row with this title already exists", e);
             return false;
         }
         return true;
@@ -64,7 +68,7 @@ public abstract class MySqlDAO<T> implements DAOFactory {
                 list.add(resultSetToBean(resultSet));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error sql request", e);
         }
         return list;
     }

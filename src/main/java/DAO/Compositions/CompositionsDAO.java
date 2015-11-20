@@ -1,18 +1,18 @@
 package DAO.Compositions;
 
 import DAO.MySqlDAO;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Vesdet on 14.11.2015.
  */
 public class CompositionsDAO extends MySqlDAO {
+    private static final Logger log = Logger.getLogger(CompositionsDAO.class);
     private String columns = "title, coffee, milk, water, chocolate, ice, cup, stick";
 
     public Composition getComposition(String title) {
@@ -25,7 +25,7 @@ public class CompositionsDAO extends MySqlDAO {
             composition = resultSetToBean(resultSet);
             return composition;
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error SQL request", e);
             return null;
         }
     }
@@ -62,7 +62,7 @@ public class CompositionsDAO extends MySqlDAO {
                     resultSet.getInt("cup"),
                     resultSet.getInt("stick"));
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("This attribute don't found", e);
         }
         return composition;
     }

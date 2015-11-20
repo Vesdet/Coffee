@@ -1,6 +1,7 @@
 package DAO.Users;
 
 import DAO.MySqlDAO;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
  * Created by Vesdet on 12.11.2015.
  */
 public class UsersDAO extends MySqlDAO {
+    private static final Logger log = Logger.getLogger(UsersDAO.class);
     private String columns = "name,login,password,money,role";
 
     public boolean addRow(String name, String login, String password, int money, String role) {
@@ -38,7 +40,7 @@ public class UsersDAO extends MySqlDAO {
             else return false;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error SQL request", e);
             return false;
         }
         return true;
@@ -56,7 +58,7 @@ public class UsersDAO extends MySqlDAO {
             st.execute(sql2);
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error SQL request", e);
             return false;
         }
         return true;
@@ -71,7 +73,7 @@ public class UsersDAO extends MySqlDAO {
             resultSet.next();
             user = resultSetToBean(resultSet);
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("Error SQL request", e);
             return null;
         }
         return user;
@@ -87,7 +89,7 @@ public class UsersDAO extends MySqlDAO {
             user.setMoney(resultSet.getInt("money"));
             user.setRole(resultSet.getString("role"));
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("This attribute don't found", e);
             return null;
         }
         return user;
