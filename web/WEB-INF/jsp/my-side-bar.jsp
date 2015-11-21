@@ -23,13 +23,13 @@
             <c:if test="${pageContext.request.getServletPath().equals('/index.jsp')}">
             list-group-item-warning
             </c:if>
-            ">Main page</a></li>
+            "><i class="fa fa-fire fa-fw"></i>&nbsp;Main page</a></li>
         <c:if test="${userBean.login == null}">
             <li><a href="registration" class="
                 <c:if test="${pageContext.request.getServletPath().equals('/WEB-INF/jsp/registration.jsp')}">
                 list-group-item-warning
                 </c:if>
-                ">Registration</a></li>
+                "><i class="fa fa-newspaper-o"></i>&nbsp;Registration</a></li>
         </c:if>
         <c:if test="${userBean.role == 'user'}">
             <li><a href="profile" class="
@@ -39,7 +39,7 @@
                 <c:if test="${pageContext.request.getServletPath().equals('/WEB-INF/jsp/user/buy.jsp')}">
                 list-group-item-warning
                 </c:if>
-                ">Profile</a></li>
+                "><i class="fa fa-user"></i>&nbsp;Profile</a></li>
         </c:if>
         <c:if test="${userBean.role == 'admin'}">
             <li><a href="filling" class="
@@ -55,7 +55,7 @@
                 <c:if test="${pageContext.request.getServletPath().equals('/WEB-INF/jsp/admin/editAdditives.jsp')}">
                 list-group-item-warning
                 </c:if>
-                ">Admin</a></li>
+                "><i class="fa fa-diamond"></i>&nbsp;Admin</a></li>
         </c:if>
         <hr/>
         <c:if test="${userBean.login == null}">
@@ -63,10 +63,10 @@
                 <c:if test="${pageContext.request.getServletPath().equals('/WEB-INF/jsp/login.jsp')}">
                 list-group-item-warning
                 </c:if>
-                ">Login</a></li>
+                "><i class="fa fa-sign-in"></i>&nbsp;Login</a></li>
         </c:if>
         <c:if test="${userBean.login != null}">
-            <li><a href="logout" class="">Logout</a></li>
+            <li><a href="logout" class=""><i class="fa fa-sign-out"></i>&nbsp;Logout</a></li>
         </c:if>
     </ul>
 </div>

@@ -15,6 +15,7 @@
     <title>Buy</title>
     <link href="../../../css/bootstrap.css" rel="stylesheet">
     <link href="../../../css/style.css" rel="stylesheet">
+    <link href="../../../font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container myback">
@@ -49,7 +50,7 @@
                             Title
                         </li>
                         <li class="list-group-item">
-                            <span class="my-badge">${drink.price}</span>
+                            <span class="my-badge">${drink.price}&nbsp;<i class="fa fa-rub"></i></span>
                             Price
                         </li>
                     </ul>
@@ -104,7 +105,7 @@
                             Login
                         </li>
                         <li class="list-group-item">
-                            <span class="my-badge">${userBean.getMoney()}</span>
+                            <span class="my-badge">${userBean.getMoney()}&nbsp;<i class="fa fa-rub"></i></span>
                             Money
                         </li>
                         <li class="list-group-item">

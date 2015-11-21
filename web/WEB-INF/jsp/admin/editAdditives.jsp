@@ -13,6 +13,7 @@
     <title>EditAdditives</title>
     <link href="../../../css/bootstrap.css" rel="stylesheet">
     <link href="../../../css/style.css" rel="stylesheet">
+    <link href="../../../font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container myback">
@@ -62,7 +63,7 @@
                         <td>${additive.getId()}</td>
                         <td>${additive.getTitle()}</td>
                         <td>${additive.getPrice()}</td>
-                        <td><a href="/additivedel?id=${additive.getId()}" class="btn btn-danger">X</a></td>
+                        <td><a href="/additivedel?id=${additive.getId()}" class="btn btn-danger"><i class="fa fa-scissors"></i></a></td>
                     </tr>
                 </c:forEach>
                 </tbody>

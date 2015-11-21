@@ -15,6 +15,7 @@
     <title>Buy</title>
     <link href="../../css/bootstrap.css" rel="stylesheet">
     <link href="../../css/style.css" rel="stylesheet">
+    <link href="../../font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container myback">

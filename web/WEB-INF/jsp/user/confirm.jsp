@@ -16,6 +16,7 @@
     <title>Buy</title>
     <link href="../../../css/bootstrap.css" rel="stylesheet">
     <link href="../../../css/style.css" rel="stylesheet">
+    <link href="../../../font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container myback">
@@ -46,18 +47,18 @@
                 <div class="my-panel-body">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <span class="my-badge">${drink.price}</span>
+                            <span class="my-badge">${drink.price}&nbsp;<i class="fa fa-rub"></i></span>
                             ${drink.title}
                         </li>
                         <c:forEach var="additive" items="${additivesList}">
                             <li class="list-group-item">
-                                <span class="my-badge">${additive.getPrice()}</span>
+                                <span class="my-badge">${additive.getPrice()}&nbsp;<i class="fa fa-rub"></i></span>
                                     ${additive.getTitle()}
                             </li>
                         </c:forEach>
                         <hr/>
                         <li class="list-group-item">
-                            <span class="my-badge">${total}</span>
+                            <span class="my-badge">${total}&nbsp;<i class="fa fa-rub"></i></span>
                             Total:
                         </li>
                     </ul>
@@ -85,7 +86,7 @@
                             Login
                         </li>
                         <li class="list-group-item">
-                            <span class="my-badge">${userBean.getMoney()}</span>
+                            <span class="my-badge">${userBean.getMoney()}&nbsp;<i class="fa fa-rub"></i></span>
                             Money
                         </li>
                         <li class="list-group-item">

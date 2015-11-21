@@ -38,67 +38,70 @@ public class ConfirmServlet extends HttpServlet {
 
         UserBean user = (UserBean) session.getAttribute("userBean");
         int total = (int) session.getAttribute("total");
-        if (user.getMoney() < total) {
+        if (user.getMoney() >= total) {
+            CompositionsDAO compositionsDAO = new CompositionsDAO();
+            Drink drink = (Drink) session.getAttribute("drink");
+            Composition composition = compositionsDAO.getComposition(drink.getTitle());
+
+            IngredientsDAO ingredientsDAO = new IngredientsDAO();
+            List<Ingredient> ingredients = ingredientsDAO.getTableList();
+            String str = checkIngredients(ingredients, composition);
+            if (str == null) {
+                AdditivesDAO additivesDAO = new AdditivesDAO();
+                List<Additive> list = (List<Additive>) session.getAttribute("additivesList");
+                boolean flag = false;
+                for (Additive x : list) {
+                    if (x.getCount() >= 0 && !flag) {
+                        additivesDAO.changeCount(x.getTitle(), -1);
+                    } else {
+                        flag = true;
+                        request.setAttribute("title", x.getTitle());
+                    }
+                }
+                if (!flag) {
+                    ingredientsDAO.changeAllCount(composition);
+
+                    UsersDAO usersDAO = new UsersDAO();
+                    user.setMoney(user.getMoney() - total);
+                    usersDAO.changeMoney(user.getLogin(), 0 - total);
+                    session.setAttribute("userBean", user);
+
+                    request.getRequestDispatcher("/WEB-INF/jsp/user/purchase.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("/WEB-INF/jsp/error/errorCount.jsp").forward(request, response);
+                }
+            } else {
+                request.setAttribute("title", str);
+                request.getRequestDispatcher("/WEB-INF/jsp/error/errorCount.jsp").forward(request, response);
+            }
+        } else {
             request.getRequestDispatcher("/WEB-INF/jsp/error/errorMoney.jsp").forward(request, response);
         }
 
-        CompositionsDAO compositionsDAO = new CompositionsDAO();
-        Drink drink = (Drink) session.getAttribute("drink");
-        Composition composition = compositionsDAO.getComposition(drink.getTitle());
-
-        IngredientsDAO ingredientsDAO = new IngredientsDAO();
-        List<Ingredient> ingredients = ingredientsDAO.getTableList();
-        String str = checkIngredients(ingredients, composition);
-        if (str != null) {
-            request.setAttribute("title", str);
-            request.getRequestDispatcher("/WEB-INF/jsp/error/errorCount.jsp").forward(request, response);
-        }
-
-        AdditivesDAO additivesDAO = new AdditivesDAO();
-        List<Additive> list = (List<Additive>) session.getAttribute("additivesList");
-        for (Additive x:list) {
-            if (x.getCount() == 0) {
-                request.setAttribute("title", x.getTitle());
-                request.getRequestDispatcher("/WEB-INF/jsp/error/errorCount.jsp").forward(request, response);
-            }
-            else {
-                additivesDAO.changeCount(x.getTitle(), -1);
-            }
-        }
-
-        ingredientsDAO.changeAllCount(composition);
-
-        UsersDAO usersDAO = new UsersDAO();
-        user.setMoney(user.getMoney() - total);
-        usersDAO.changeMoney(user.getLogin(), 0-total);
-        session.setAttribute("userBean", user);
-
-        request.getRequestDispatcher("/WEB-INF/jsp/user/purchase.jsp").forward(request, response);
     }
 
     private String checkIngredients(List<Ingredient> ingredients, Composition composition) {
 
-        for (Ingredient x:ingredients)
-        {
-            if (x.getTitle().equals("Coffee") && x.getCount()<composition.getCoffee()) {
+        for (Ingredient x : ingredients) {
+            if (x.getTitle().equals("Coffee") && x.getCount() < composition.getCoffee()) {
                 return "Coffee";
             }
-            if (x.getTitle().equals("Milk") && x.getCount()<composition.getMilk()) {
+            if (x.getTitle().equals("Milk") && x.getCount() < composition.getMilk()) {
                 return "Milk";
             }
-            if (x.getTitle().equals("Water") && x.getCount()<composition.getWater()) {
+            if (x.getTitle().equals("Water") && x.getCount() < composition.getWater()) {
                 return "Water";
             }
-            if (x.getTitle().equals("Chocolate") && x.getCount()<composition.getChocolate()) {
+            if (x.getTitle().equals("Chocolate") && x.getCount() < composition.getChocolate()) {
                 return "Chocolate";
             }
-            if (x.getTitle().equals("Ice") && x.getCount()<composition.getIce()) {
+            if (x.getTitle().equals("Ice") && x.getCount() < composition.getIce()) {
                 return "Ice";
             }
-            if (x.getTitle().equals("Cup") && x.getCount()<composition.getCup()) {
+            if (x.getTitle().equals("Cup") && x.getCount() < composition.getCup()) {
                 return "Cup";
             }
-            if (x.getTitle().equals("Stick") && x.getCount()<composition.getStick()) {
+            if (x.getTitle().equals("Stick") && x.getCount() < composition.getStick()) {
                 return "Stick";
             }
         }

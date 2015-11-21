@@ -13,6 +13,7 @@
     <title>EditDrinks</title>
     <link href="../../../css/bootstrap.css" rel="stylesheet">
     <link href="../../../css/style.css" rel="stylesheet">
+    <link href="../../../font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container myback">
@@ -65,8 +66,8 @@
                         <td>${drink.getTitle()}</td>
                         <td>${drink.getPrice()}</td>
                         <td>${drink.getDescription()}</td>
-                        <td><a href="/editDrink?id=${drink.getId()}" class="btn btn-success">E</a></td>
-                        <td><a href="/delete?id=${drink.getId()}" class="btn btn-danger">X</a></td>
+                        <td><a href="/editDrink?id=${drink.getId()}" class="btn btn-success"><i class="fa fa-eraser"></i></a></td>
+                        <td><a href="/delete?id=${drink.getId()}" class="btn btn-danger"><i class="fa fa-scissors"></i></a></td>
                     </tr>
                 </c:forEach>
                 </tbody>

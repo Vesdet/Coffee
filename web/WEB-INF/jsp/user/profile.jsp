@@ -14,6 +14,7 @@
     <title>Buy</title>
     <link href="../../../css/bootstrap.css" rel="stylesheet">
     <link href="../../../css/style.css" rel="stylesheet">
+    <link href="../../../font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container myback">
@@ -43,7 +44,7 @@
                 <tr class="warning">
                     <th>#</th>
                     <th>Title</th>
-                    <th>Price</th>
+                    <th>Price,<i class="fa fa-rub"></i></th>
                     <th>Description</th>
                     <th>Buy</th>
                 </tr>
@@ -55,7 +56,7 @@
                         <td>${drink.getTitle()}</td>
                         <td>${drink.getPrice()}</td>
                         <td>${drink.getDescription()}</td>
-                        <td><a href="buy?id=${drink.getId()}" class="btn btn-info">B</a></td>
+                        <td><a href="buy?id=${drink.getId()}" class="btn btn-info"><i class="fa fa-hand-o-right"></i></a></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -79,7 +80,7 @@
                             Login
                         </li>
                         <li class="list-group-item">
-                            <span class="my-badge">${userBean.getMoney()}</span>
+                            <span class="my-badge">${userBean.getMoney()}&nbsp;<i class="fa fa-rub"></i></span>
                             Money
                         </li>
                         <li class="list-group-item">
@@ -92,7 +93,7 @@
             <hr/>
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Fill up money</h3>
+                    <h3 class="panel-title"><i class="fa fa-cc-visa"></i>&nbsp;<i class="fa fa-cc-mastercard"></i>&nbsp;Fill money</h3>
                 </div>
                 <div class="panel-body">
                     <form action="profile" method="post" class="form-horizontal">

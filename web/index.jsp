@@ -14,32 +14,12 @@
 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container myback">
 
-    <%--<div class="row">--%>
-
-        <%--<div class="col-lg-15">--%>
-            <%--<h1 class="page-header"><i>ShinimaCoffee</i></h1>--%>
-        <%--</div>--%>
-
-    <%--</div>--%>
-    <%--<div class="row">--%>
-
         <%@ include file="WEB-INF/jsp/my-side-bar.jsp" %>
-        <%--<div class="col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-
-                <li><a href="/" class="list-group-item-warning">Main page</a></li>
-                <li><a href="registration" class="">Registration</a></li>
-                <li><a href="profile" class="">Profile</a></li>
-                <li><a href="filling" class="">Admin</a></li>
-                <hr/>
-                <li><a href="mainlogin" class="">Login</a></li>
-                <li><a href="logout" class="">Logout</a></li>
-            </ul>
-        </div>--%>
 
         <div class="col-lg-10">
 
@@ -48,11 +28,13 @@
                     <h3 class="panel-title">Hello, my dear friend!</h3>
                 </div>
                 <div class="panel-body">
-                    ТУТ МОГЛА БЫ БЫТЬ ВАША РЕКЛАМА
+                    <p><i class="fa fa-coffee fa-2x"></i><i>«Аромат – это душа кофе, если и её научатся подделывать, то жить будет совсем тоскливо».</i></p>
                     <hr/>
-                    <br/>
-
-                    А также много-много бесполезной Shinim'ы!!
+                    <p>На данном сайте ты можешь насладится изысканными вкусами кофе в сочетании с великолепными добавками.</p>
+                    <p>Многие предпочитают не добавлять в кофе ничего, даже от сахара отказываются. Если ты один из них, то тут ты можешь испить вкуснейший эспрессо!</p>
+                    <p>Если же тебе нравятся кофейные эксперименты, то ты не сможешь устоять перед чашкой кофе с вишнёвым ликером или с добавлением мускатного ореха.</p>
+                    <p>Всего-лишь нужно пройти <a href="registration">регистрацию</a> и тогда... перед тобой откроются все виды кофейных напитков и весь удивительный список добавок!</p>
+                    <p>И знай, даже самые обычные добавки могут еще больше раскрыть вкус кофе.</p>
                 </div>
             </div>
             <%--<table class="table table-striped table-hover table-bordered">--%>
