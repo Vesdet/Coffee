@@ -11,7 +11,7 @@
 <div class="row">
 
     <div class="col-lg-15">
-        <h1 class="page-header"><i>ShinimaCoffee</i></h1>
+        <h1 class="page-header"><img src="css/img2.png" width="200" height="100"/><i>ShinimaCoffee</i></h1>
     </div>
 
 </div>
