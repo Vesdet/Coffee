@@ -26,7 +26,7 @@ import java.util.List;
  * Created by Vesdet on 20.11.2015.
  */
 @WebServlet(name = "ConfirmServlet", urlPatterns = "/confirm")
-@ServletSecurity(@HttpConstraint(rolesAllowed = {"lalka"}))
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"user"}))
 public class ConfirmServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

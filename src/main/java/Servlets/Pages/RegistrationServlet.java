@@ -22,11 +22,14 @@ public class RegistrationServlet extends HttpServlet {
         String userPassword = request.getParameter("regPassword");
 
         UsersDAO dao = new UsersDAO();
-        if (!userName.equals("") || !userName.equals("") || !userPassword.equals(""))
-            dao.addRow(userName, userLogin, userPassword, 0, "lalka");
-
-        // TODO не на error кидать надо
-        request.getRequestDispatcher("/WEB-INF/jsp/error/error.jsp").forward(request, response);
+        if (!userName.equals("") || !userLogin.equals("") || !userPassword.equals("")){
+            if (dao.addRow(userName, userLogin, userPassword, 0, "user")) {
+                request.setAttribute("log", userLogin);
+                request.setAttribute("pas", userPassword);
+                request.getRequestDispatcher("/WEB-INF/jsp/completeRegistration.jsp").forward(request, response);
+            } else request.getRequestDispatcher("/WEB-INF/jsp/error/error.jsp").forward(request, response);
+        }
+        else request.getRequestDispatcher("/WEB-INF/jsp/error/error.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

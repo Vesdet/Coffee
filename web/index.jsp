@@ -18,17 +18,19 @@
 <body>
 <div class="container myback">
 
-    <div class="row">
+    <%--<div class="row">--%>
 
-        <div class="col-lg-15">
-            <h1 class="page-header"><i>ShinimaCoffee</i></h1>
-        </div>
+        <%--<div class="col-lg-15">--%>
+            <%--<h1 class="page-header"><i>ShinimaCoffee</i></h1>--%>
+        <%--</div>--%>
 
-    </div>
-    <div class="row">
+    <%--</div>--%>
+    <%--<div class="row">--%>
 
-        <div class="col-md-2 sidebar">
+        <%@ include file="WEB-INF/jsp/my-side-bar.jsp" %>
+        <%--<div class="col-md-2 sidebar">
             <ul class="nav nav-sidebar">
+
                 <li><a href="/" class="list-group-item-warning">Main page</a></li>
                 <li><a href="registration" class="">Registration</a></li>
                 <li><a href="profile" class="">Profile</a></li>
@@ -37,7 +39,7 @@
                 <li><a href="mainlogin" class="">Login</a></li>
                 <li><a href="logout" class="">Logout</a></li>
             </ul>
-        </div>
+        </div>--%>
 
         <div class="col-lg-10">
 
@@ -49,6 +51,7 @@
                     ТУТ МОГЛА БЫ БЫТЬ ВАША РЕКЛАМА
                     <hr/>
                     <br/>
+
                     А также много-много бесполезной Shinim'ы!!
                 </div>
             </div>

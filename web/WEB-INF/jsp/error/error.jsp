@@ -28,6 +28,8 @@
                 </div>
                 <div class="panel-body">
                     Incorrect user name or password
+                    OR
+                    This Login already exist
                 </div>
             </div>
         </div>

@@ -20,22 +20,32 @@ import java.util.List;
  * Created by Vesdet on 19.11.2015.
  */
 @WebServlet(name = "ProfileServlet", urlPatterns = "/profile")
-@ServletSecurity(@HttpConstraint(rolesAllowed = {"lalka"}))
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"user"}))
 public class ProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession session = request.getSession();
+        UserBean user = (UserBean) session.getAttribute("userBean");
+
+        int money = Integer.valueOf(request.getParameter("money"));
+        UsersDAO dao = new UsersDAO();
+        dao.changeMoney(user.getLogin(), money);
+        user.setMoney(user.getMoney()+money);
+
+        session.setAttribute("userBean", user);
+        response.sendRedirect("/profile");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
 
-        if (session.getAttribute("userBean") == null) {
-            String userName = request.getUserPrincipal().getName();
-            UsersDAO dao = new UsersDAO();
-            UserBean user = dao.getUser(userName);
-            session.setAttribute("userBean", user);
-        }
+//        if (session.getAttribute("userBean") == null) {
+//            String userName = request.getUserPrincipal().getName();
+//            UsersDAO dao = new UsersDAO();
+//            UserBean user = dao.getUser(userName);
+//            session.setAttribute("userBean", user);
+//        }
         if (session.getAttribute("drinkList") == null) {
             DrinkDAO x = new DrinkDAO();
             List<Drink> list = x.getTableList();

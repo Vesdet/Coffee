@@ -23,7 +23,7 @@ import java.util.List;
  * Created by Vesdet on 12.11.2015.
  */
 @WebServlet(name = "buy", urlPatterns = "/buy")
-@ServletSecurity(@HttpConstraint(rolesAllowed = {"lalka"}))
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"user"}))
 public class BuyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -63,12 +63,12 @@ public class BuyServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        if (session.getAttribute("userBean") == null) {
-            UsersDAO dao = new UsersDAO();
-            String userName = request.getUserPrincipal().getName();
-            UserBean user = dao.getUser(userName);
-            session.setAttribute("userBean", user);
-        }
+//        if (session.getAttribute("userBean") == null) {
+//            UsersDAO dao = new UsersDAO();
+//            String userName = request.getUserPrincipal().getName();
+//            UserBean user = dao.getUser(userName);
+//            session.setAttribute("userBean", user);
+//        }
         if (session.getAttribute("additives") == null) {
             AdditivesDAO additivesDAO = new AdditivesDAO();
             List<Additive> list = additivesDAO.getTableList();

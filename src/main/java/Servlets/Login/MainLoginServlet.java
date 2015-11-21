@@ -13,7 +13,7 @@ import java.io.IOException;
  * Created by Vesdet on 19.11.2015.
  */
 @WebServlet(name = "MainLoginServlet", urlPatterns = "/mainlogin")
-@ServletSecurity(@HttpConstraint(rolesAllowed = {"lalka", "admin"}))
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"user", "admin"}))
 public class MainLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

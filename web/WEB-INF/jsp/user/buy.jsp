@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="userBean" scope="session" type="DAO.Users.UserBean"/>
+<%--<jsp:useBean id="userBean" scope="session" type="DAO.Users.UserBean"/>--%>
 <jsp:useBean id="drink" scope="request" type="DAO.Drinks.Drink"/>
 <jsp:useBean id="additives" scope="session" type="java.util.List"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -18,23 +18,24 @@
 </head>
 <body>
 <div class="container myback">
-    <div class="row">
-        <div class="col-lg-15">
-            <h1 class="page-header"><i>ShinimaCoffee</i></h1>
-        </div>
-    </div>
+    <%--<div class="row">--%>
+        <%--<div class="col-lg-15">--%>
+            <%--<h1 class="page-header"><i>ShinimaCoffee</i></h1>--%>
+        <%--</div>--%>
+    <%--</div>--%>
 
-    <div class="row">
-        <div class="col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li><a href="/" class="">Main page</a></li>
-                <li><a href="registration" class="">Registration</a></li>
-                <li><a href="profile" class="">Profile</a></li>
-                <hr/>
-                <li><a href="mainlogin" class="">Login</a></li>
-                <li><a href="logout" class="">Logout</a></li>
-            </ul>
-        </div>
+    <%--<div class="row">--%>
+        <%@ include file="../my-side-bar.jsp" %>
+        <%--<div class="col-md-2 sidebar">--%>
+            <%--<ul class="nav nav-sidebar">--%>
+                <%--<li><a href="/" class="">Main page</a></li>--%>
+                <%--<li><a href="registration" class="">Registration</a></li>--%>
+                <%--<li><a href="profile" class="">Profile</a></li>--%>
+                <%--<hr/>--%>
+                <%--<li><a href="mainlogin" class="">Login</a></li>--%>
+                <%--<li><a href="logout" class="">Logout</a></li>--%>
+            <%--</ul>--%>
+        <%--</div>--%>
 
         <div class="col-lg-4">
             <div class="panel panel-warning">
