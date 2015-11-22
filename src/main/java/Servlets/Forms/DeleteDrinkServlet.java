@@ -1,5 +1,7 @@
 package Servlets.Forms;
 
+import DAO.Compositions.CompositionsDAO;
+import DAO.Drinks.Drink;
 import DAO.Drinks.DrinkDAO;
 
 import javax.servlet.ServletException;
@@ -24,7 +26,12 @@ public class DeleteDrinkServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         DrinkDAO dao = new DrinkDAO();
+        Drink drink = dao.getRow(Integer.valueOf(request.getParameter("id")));
+        String str = drink.getTitle();
         dao.deleteRow(request.getParameter("id"));
+
+        CompositionsDAO com = new CompositionsDAO();
+        com.deleteRow(str);
         response.sendRedirect("/edit");
     }
 }
