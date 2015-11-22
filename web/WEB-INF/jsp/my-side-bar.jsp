@@ -15,6 +15,7 @@
     </div>
 
 </div>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="userBean" scope="session" class="DAO.Users.UserBean"/>
 <div class="row">
 <div class="col-md-2 sidebar">
@@ -23,13 +24,13 @@
             <c:if test="${pageContext.request.getServletPath().equals('/index.jsp')}">
             list-group-item-warning
             </c:if>
-            "><i class="fa fa-fire fa-fw"></i>&nbsp;Main page</a></li>
+            "><i class="fa fa-fire fa-fw"></i>&nbsp;<fmt:message key='sidebar.main'/></a></li>
         <c:if test="${userBean.login == null}">
             <li><a href="registration" class="
                 <c:if test="${pageContext.request.getServletPath().equals('/WEB-INF/jsp/registration.jsp')}">
                 list-group-item-warning
                 </c:if>
-                "><i class="fa fa-newspaper-o"></i>&nbsp;Registration</a></li>
+                "><i class="fa fa-newspaper-o"></i>&nbsp;<fmt:message key='sidebar.reg'/></a></li>
         </c:if>
         <c:if test="${userBean.role == 'user'}">
             <li><a href="profile" class="
@@ -39,7 +40,7 @@
                 <c:if test="${pageContext.request.getServletPath().equals('/WEB-INF/jsp/user/buy.jsp')}">
                 list-group-item-warning
                 </c:if>
-                "><i class="fa fa-user"></i>&nbsp;Profile</a></li>
+                "><i class="fa fa-user"></i>&nbsp;<fmt:message key='sidebar.profile'/></a></li>
         </c:if>
         <c:if test="${userBean.role == 'admin'}">
             <li><a href="filling" class="
@@ -55,7 +56,7 @@
                 <c:if test="${pageContext.request.getServletPath().equals('/WEB-INF/jsp/admin/editAdditives.jsp')}">
                 list-group-item-warning
                 </c:if>
-                "><i class="fa fa-diamond"></i>&nbsp;Admin</a></li>
+                "><i class="fa fa-diamond"></i>&nbsp;<fmt:message key='sidebar.admin'/></a></li>
         </c:if>
         <hr/>
         <c:if test="${userBean.login == null}">
@@ -63,10 +64,13 @@
                 <c:if test="${pageContext.request.getServletPath().equals('/WEB-INF/jsp/login.jsp')}">
                 list-group-item-warning
                 </c:if>
-                "><i class="fa fa-sign-in"></i>&nbsp;Login</a></li>
+                "><i class="fa fa-sign-in"></i>&nbsp;<fmt:message key='sidebar.login'/></a></li>
         </c:if>
         <c:if test="${userBean.login != null}">
-            <li><a href="logout" class=""><i class="fa fa-sign-out"></i>&nbsp;Logout</a></li>
+            <li><a href="logout" class=""><i class="fa fa-sign-out"></i>&nbsp;<fmt:message key='sidebar.logout'/></a></li>
         </c:if>
+        <hr/>
+        <li><a href="changeLocale?locale=ru_RU" class="">&nbsp;<fmt:message key='sidebar.rus'/></a></li>
+        <li><a href="changeLocale?locale=en_US" class="">&nbsp;<fmt:message key='sidebar.eng'/></a></li>
     </ul>
 </div>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Vesdet
@@ -25,18 +26,16 @@
         <div class="col-lg-6">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Error!!</h3>
+                    <h3 class="panel-title"><fmt:message key='error'/>!!</h3>
                 </div>
                 <div class="panel-body">
-                    Incorrect user name or password
-                    OR
-                    This Login already exist
+                    <fmt:message key='error.text'/>
                 </div>
             </div>
         </div>
 
-        <a href="/" class="btn btn-warning">Go to Main Page</a>
-        <a href="/registration" class="btn btn-warning">Registration</a>
+        <a href="/" class="btn btn-warning"><fmt:message key='error.goMain'/></a>
+        <a href="/registration" class="btn btn-warning"><fmt:message key='sidebar.reg'/></a>
     </div>
 </div>
 

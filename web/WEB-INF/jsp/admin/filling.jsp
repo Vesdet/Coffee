@@ -18,39 +18,21 @@
 </head>
 <body>
 <div class="container myback">
-    <%--<div class="row">--%>
-        <%--<div class="col-lg-15">--%>
-            <%--<h1 class="page-header"><i>ShinimaCoffee</i></h1>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-
-    <%--<div class="row">--%>
         <%@ include file="../my-side-bar.jsp" %>
-        <%--<div class="col-md-2 sidebar">--%>
-            <%--<ul class="nav nav-sidebar">--%>
-                <%--<li><a href="/" class="">Main page</a></li>--%>
-                <%--<li><a href="registration" class="">Registration</a></li>--%>
-                <%--<li><a href="profile" class="">Profile</a></li>--%>
-                <%--<li><a href="filling" class="list-group-item-warning">Admin</a></li>--%>
-                <%--<hr/>--%>
-                <%--<li><a href="mainlogin" class="">Login</a></li>--%>
-                <%--<li><a href="logout" class="">Logout</a></li>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
 
         <div class="col-lg-10">
             <div class="btn-group btn-group-justified">
-                <a href="new" class="btn btn-default">New</a>
-                <a href="edit" class="btn btn-default">Edit Drinks</a>
-                <a href="additives" class="btn btn-default">Edit Additives</a>
-                <a href="#" class="btn btn-warning">Filling</a>
+                <a href="new" class="btn btn-default"><fmt:message key='admin.new'/></a>
+                <a href="edit" class="btn btn-default"><fmt:message key='admin.drinks'/></a>
+                <a href="additives" class="btn btn-default"><fmt:message key='admin.additives'/></a>
+                <a href="#" class="btn btn-warning"><fmt:message key='admin.filling'/></a>
             </div>
         </div>
 
         <div class="col-lg-3">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Fill up ingredients</h3>
+                    <h3 class="panel-title"><fmt:message key='filling.ingredient'/></h3>
                 </div>
                 <div class="panel-body">
                     <form action="fillUp" method="post" class="form-horizontal">
@@ -73,7 +55,7 @@
                         </c:forEach>
                         <div class="form-group">
                             <div class="col-lg-8 col-lg-offset-1">
-                                <button type="submit" class="btn btn-warning">Fill up</button>
+                                <button type="submit" class="btn btn-warning"><fmt:message key='fill'/></button>
                             </div>
                         </div>
                     </form>
@@ -84,7 +66,7 @@
         <div class="col-lg-4">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Fill up additives</h3>
+                    <h3 class="panel-title"><fmt:message key='filling.additive'/></h3>
                 </div>
                 <div class="panel-body">
                     <form action="fillUp" method="get" class="form-horizontal">
@@ -110,7 +92,7 @@
                             </div>
                         <div class="form-group">
                             <div class="col-lg-8">
-                                <button type="submit" class="btn btn-warning">Fill up</button>
+                                <button type="submit" class="btn btn-warning"><fmt:message key='fill'/></button>
                             </div>
                         </div>
                     </form>
@@ -121,7 +103,7 @@
         <div class="col-lg-3 pull-right">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Amount ingredients</h3>
+                    <h3 class="panel-title"><fmt:message key='filling.amountI'/></h3>
                 </div>
                 <div class="my-panel-body">
                     <ul class="list-group">
@@ -136,7 +118,7 @@
             </div>
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Amount additives</h3>
+                    <h3 class="panel-title"><fmt:message key='filling.amountA'/></h3>
                 </div>
                 <div class="my-panel-body">
                     <ul class="list-group">

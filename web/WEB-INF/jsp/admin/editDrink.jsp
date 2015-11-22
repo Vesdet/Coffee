@@ -18,58 +18,38 @@
 
 <div class="container myback">
 
-    <%--<div class="row">--%>
-        <%--<div class="col-lg-15">--%>
-            <%--<h1 class="page-header"><i>ShinimaCoffee</i></h1>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-
-    <%--<div class="row">--%>
         <%@ include file="../my-side-bar.jsp" %>
-        <%--<div class="col-md-2 sidebar">--%>
-            <%--<ul class="nav nav-sidebar">--%>
-                <%--<li><a href="/" class="">Main page</a></li>--%>
-                <%--<li><a href="registration" class="">Registration</a></li>--%>
-                <%--<li><a href="profile" class="">Profile</a></li>--%>
-                <%--<li><a href="filling" class="list-group-item-warning">Admin</a></li>--%>
-                <%--<hr/>--%>
-                <%--<li><a href="mainlogin" class="">Login</a></li>--%>
-                <%--<li><a href="logout" class="">Logout</a></li>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
-        <%--col-lg-offset-1--%>
         <div class="col-lg-5">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Edit Drink</h3>
+                    <h3 class="panel-title"><fmt:message key='admin.drinks'/></h3>
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal" action="editDrink?id=${drink.id}" method="post">
                         <div class="form-group">
-                            <label class="col-lg-4 control-label">Title</label>
+                            <label class="col-lg-4 control-label"><fmt:message key='title'/></label>
 
                             <div class="col-lg-8 has-warning">
-                                <input type="text" class="form-control" name="editTitle" placeholder="Title" value="${drink.title}">
+                                <input type="text" class="form-control" name="editTitle" placeholder="<fmt:message key='title'/>" value="${drink.title}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label">Price</label>
+                            <label class="col-lg-4 control-label"><fmt:message key='price'/></label>
 
                             <div class="col-lg-8 has-warning">
-                                <input type="number" class="form-control" name="editPrice" placeholder="Price" value="${drink.price}">
+                                <input type="number" class="form-control" name="editPrice" placeholder="<fmt:message key='price'/>" value="${drink.price}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label">Description</label>
+                            <label class="col-lg-4 control-label"><fmt:message key='description'/></label>
 
                             <div class="col-lg-8 has-warning">
-                                <textarea class="form-control" rows="3" id="textArea" name="editDescription" placeholder="Description">${drink.description}</textarea>
-                                <%--<input type="text" class="form-control" name="addPrice" placeholder="Description">--%>
+                                <textarea class="form-control" rows="3" id="textArea" name="editDescription" placeholder="<fmt:message key='description'/>">${drink.description}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-8 col-lg-offset-2">
-                                <button type="submit" class="btn btn-warning">Submit</button>
+                                <button type="submit" class="btn btn-warning"><fmt:message key='submit'/></button>
                             </div>
                         </div>
                     </form>

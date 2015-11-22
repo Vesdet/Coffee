@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<jsp:useBean id="userBean" scope="session" type="DAO.Users.UserBean"/>--%>
 <jsp:useBean id="drinkList" scope="session" type="java.util.List"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -18,24 +17,7 @@
 </head>
 <body>
 <div class="container myback">
-    <%--<div class="row">--%>
-        <%--<div class="col-lg-15">--%>
-            <%--<h1 class="page-header"><i>ShinimaCoffee</i></h1>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-
-    <%--<div class="row">--%>
         <%@ include file="../my-side-bar.jsp" %>
-        <%--<div class="col-md-2 sidebar">--%>
-            <%--<ul class="nav nav-sidebar">--%>
-                <%--<li><a href="/" class="">Main page</a></li>--%>
-                <%--<li><a href="registration" class="">Registration</a></li>--%>
-                <%--<li><a href="profile" class="list-group-item-warning">Profile</a></li>--%>
-                <%--<hr/>--%>
-                <%--<li><a href="mainlogin" class="">Login</a></li>--%>
-                <%--<li><a href="logout" class="">Logout</a></li>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
 
         <div class="col-lg-8">
 
@@ -43,10 +25,10 @@
                 <thead>
                 <tr class="warning">
                     <th>#</th>
-                    <th>Title</th>
-                    <th>Price,<i class="fa fa-rub"></i></th>
-                    <th>Description</th>
-                    <th>Buy</th>
+                    <th><fmt:message key='title'/></th>
+                    <th><fmt:message key='price'/>,<i class="fa fa-rub"></i></th>
+                    <th><fmt:message key='description'/></th>
+                    <th><fmt:message key='buy'/></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -67,25 +49,25 @@
         <div class="col-lg-2 pull-right">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Your account</h3>
+                    <h3 class="panel-title"><fmt:message key='user.account'/></h3>
                 </div>
                 <div class="my-panel-body">
                     <ul class="list-group">
                         <li class="list-group-item">
                             <span class="my-badge">${userBean.getName()}</span>
-                            Name
+                            <fmt:message key='name'/>
                         </li>
                         <li class="list-group-item">
                             <span class="my-badge">${userBean.getLogin()}</span>
-                            Login
+                            <fmt:message key='login'/>
                         </li>
                         <li class="list-group-item">
                             <span class="my-badge">${userBean.getMoney()}&nbsp;<i class="fa fa-rub"></i></span>
-                            Money
+                            <fmt:message key='user.money'/>
                         </li>
                         <li class="list-group-item">
                             <span class="my-badge">${userBean.getRole()}</span>
-                            Status
+                            <fmt:message key='user.status'/>
                         </li>
                     </ul>
                 </div>
@@ -93,13 +75,13 @@
             <hr/>
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-cc-visa"></i>&nbsp;<i class="fa fa-cc-mastercard"></i>&nbsp;Fill money</h3>
+                    <h3 class="panel-title"><i class="fa fa-cc-visa"></i>&nbsp;<i class="fa fa-cc-mastercard"></i>&nbsp;<fmt:message key='user.fillMoney'/></h3>
                 </div>
                 <div class="panel-body">
                     <form action="profile" method="post" class="form-horizontal">
                         <div class="form-group">
                             <div class="form-group">
-                                <label class="col-lg-3 col-lg-offset-1 control-label">Money</label>
+                                <label class="col-lg-3 col-lg-offset-1 control-label"><fmt:message key='user.money'/></label>
 
                                 <div class="col-lg-7">
                                     <select class="form-control col-lg-offset-1"
@@ -116,7 +98,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-lg-8">
-                                <button type="submit" class="btn btn-warning">Fill up</button>
+                                <button type="submit" class="btn btn-warning"><fmt:message key='fill'/></button>
                             </div>
                         </div>
                     </form>

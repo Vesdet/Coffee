@@ -17,58 +17,38 @@
 <body>
 
 <div class="container myback">
-
-    <%--<div class="row">--%>
-        <%--<div class="col-lg-15">--%>
-            <%--<h1 class="page-header"><i>ShinimaCoffee</i></h1>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-
-    <%--<div class="row">--%>
         <%@ include file="my-side-bar.jsp" %>
-        <%--<div class="col-md-2 sidebar">--%>
-            <%--<ul class="nav nav-sidebar">--%>
-                <%--<li><a href="/" class="">Main page</a></li>--%>
-                <%--<li><a href="registration" class="list-group-item-warning">Registration</a></li>--%>
-                <%--<li><a href="profile" class="">Profile</a></li>--%>
-                <%--<li><a href="filling" class="">Admin</a></li>--%>
-                <%--<hr/>--%>
-                <%--<li><a href="mainlogin" class="">Login</a></li>--%>
-                <%--<li><a href="logout" class="">Logout</a></li>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
-        <%--col-lg-offset-1--%>
         <div class="col-lg-5">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Registration</h3>
+                    <h3 class="panel-title"><fmt:message key='registration.title'/></h3>
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal" action="registration" method="post">
                         <div class="form-group">
-                            <label class="col-lg-2 control-label">Name</label>
+                            <label class="col-lg-2 control-label"><fmt:message key='name'/></label>
 
                             <div class="col-lg-8 has-warning">
-                                <input type="text" class="form-control" name="regName" placeholder="Name">
+                                <input type="text" class="form-control" name="regName" placeholder="<fmt:message key='name'/>">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label">Login</label>
+                            <label class="col-lg-2 control-label"><fmt:message key='login'/></label>
 
                             <div class="col-lg-8 has-warning">
-                                <input type="text" class="form-control" name="regLogin" placeholder="Login">
+                                <input type="text" class="form-control" name="regLogin" placeholder="<fmt:message key='login'/>">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label">Password</label>
+                            <label class="col-lg-2 control-label"><fmt:message key='password'/></label>
 
                             <div class="col-lg-8 has-warning">
-                                <input type="password" class="form-control" name="regPassword" placeholder="Password">
+                                <input type="password" class="form-control" name="regPassword" placeholder="<fmt:message key='password'/>">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-8 col-lg-offset-2">
-                                <button type="submit" class="btn btn-warning">Submit</button>
+                                <button type="submit" class="btn btn-warning"><fmt:message key='submit'/></button>
                             </div>
                         </div>
                     </form>

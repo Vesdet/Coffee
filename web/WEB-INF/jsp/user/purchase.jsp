@@ -6,42 +6,25 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<jsp:useBean id="userBean" scope="session" type="DAO.Users.UserBean"/>--%>
 <jsp:useBean id="drink" scope="session" type="DAO.Drinks.Drink"/>
 <jsp:useBean id="additivesList" scope="session" type="java.util.List"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Buy</title>
+    <title>Purchase</title>
     <link href="../../../css/bootstrap.css" rel="stylesheet">
     <link href="../../../css/style.css" rel="stylesheet">
     <link href="../../../font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container myback">
-    <%--<div class="row">--%>
-        <%--<div class="col-lg-15">--%>
-            <%--<h1 class="page-header"><i>ShinimaCoffee</i></h1>--%>
-        <%--</div>--%>
-    <%--</div>--%>
 
-    <%--<div class="row">--%>
         <%@ include file="../my-side-bar.jsp" %>
-        <%--<div class="col-md-2 sidebar">--%>
-            <%--<ul class="nav nav-sidebar">--%>
-                <%--<li><a href="/" class="">Main page</a></li>--%>
-                <%--<li><a href="registration" class="">Registration</a></li>--%>
-                <%--<li><a href="profile" class="">Profile</a></li>--%>
-                <%--<hr/>--%>
-                <%--<li><a href="mainlogin" class="">Login</a></li>--%>
-                <%--<li><a href="logout" class="">Logout</a></li>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
 
         <div class="col-lg-5">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">You bought</h3>
+                    <h3 class="panel-title"><fmt:message key='purchase.title'/></h3>
                 </div>
                 <div class="my-panel-body">
                     <ul class="list-group">
@@ -58,7 +41,7 @@
                         </c:forEach>
                     </ul>
                     <div class="col-lg-8 col-lg-offset-2">
-                        <a href="profile" class="btn btn-warning">Ok!</a>
+                        <a href="profile" class="btn btn-warning"><fmt:message key='ok'/></a>
                     </div>
                 </div>
             </div>
@@ -67,25 +50,25 @@
         <div class="col-lg-2 pull-right">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Your account</h3>
+                    <h3 class="panel-title"><fmt:message key='user.account'/></h3>
                 </div>
                 <div class="my-panel-body">
                     <ul class="list-group">
                         <li class="list-group-item">
                             <span class="my-badge">${userBean.getName()}</span>
-                            Name
+                            <fmt:message key='name'/>
                         </li>
                         <li class="list-group-item">
                             <span class="my-badge">${userBean.getLogin()}</span>
-                            Login
+                            <fmt:message key='login'/>
                         </li>
                         <li class="list-group-item">
                             <span class="my-badge">${userBean.getMoney()}&nbsp;<i class="fa fa-rub"></i></span>
-                            Money
+                            <fmt:message key='user.money'/>
                         </li>
                         <li class="list-group-item">
                             <span class="my-badge">${userBean.getRole()}</span>
-                            Status
+                            <fmt:message key='user.status'/>
                         </li>
                     </ul>
                 </div>

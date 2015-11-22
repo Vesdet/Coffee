@@ -17,32 +17,14 @@
 </head>
 <body>
 <div class="container myback">
-    <%--<div class="row">--%>
-        <%--<div class="col-lg-15">--%>
-            <%--<h1 class="page-header"><i>ShinimaCoffee</i></h1>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-
-    <%--<div class="row">--%>
         <%@ include file="../my-side-bar.jsp" %>
-        <%--<div class="col-md-2 sidebar">--%>
-            <%--<ul class="nav nav-sidebar">--%>
-                <%--<li><a href="/" class="">Main page</a></li>--%>
-                <%--<li><a href="registration" class="">Registration</a></li>--%>
-                <%--<li><a href="profile" class="">Profile</a></li>--%>
-                <%--<li><a href="filling" class="list-group-item-warning">Admin</a></li>--%>
-                <%--<hr/>--%>
-                <%--<li><a href="mainlogin" class="">Login</a></li>--%>
-                <%--<li><a href="logout" class="">Logout</a></li>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
 
         <div class="col-lg-10">
             <div class="btn-group btn-group-justified">
-                <a href="new" class="btn btn-default">New</a>
-                <a href="#" class="btn btn-warning">Edit Drinks</a>
-                <a href="additives" class="btn btn-default">Edit Additives</a>
-                <a href="filling" class="btn btn-default">Filling</a>
+                <a href="new" class="btn btn-default"><fmt:message key='admin.new'/></a>
+                <a href="#" class="btn btn-warning"><fmt:message key='admin.drinks'/></a>
+                <a href="additives" class="btn btn-default"><fmt:message key='admin.additives'/></a>
+                <a href="filling" class="btn btn-default"><fmt:message key='admin.filling'/></a>
             </div>
         </div>
 
@@ -52,11 +34,11 @@
                 <thead>
                 <tr class="warning">
                     <th>#</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th><fmt:message key='title'/></th>
+                    <th><fmt:message key='price'/></th>
+                    <th><fmt:message key='description'/></th>
+                    <th><fmt:message key='edit'/></th>
+                    <th><fmt:message key='delete'/></th>
                 </tr>
                 </thead>
                 <tbody>

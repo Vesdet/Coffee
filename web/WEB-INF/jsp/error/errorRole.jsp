@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Vesdet
@@ -25,15 +26,15 @@
         <div class="col-lg-6">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Error!!</h3>
+                    <h3 class="panel-title"><fmt:message key='error'/>!!</h3>
                 </div>
                 <div class="panel-body">
-                    <i class="fa fa-lock fa2x"></i> У вас нет доступа к этой странице !!!
+                    <i class="fa fa-lock fa2x"></i> <fmt:message key='errorRole.text'/>
                 </div>
             </div>
         </div>
 
-        <a href="/" class="btn btn-warning">Go to Main Page</a>
+        <a href="/" class="btn btn-warning"><fmt:message key='error.goMain'/></a>
     </div>
 </div>
 </body>
