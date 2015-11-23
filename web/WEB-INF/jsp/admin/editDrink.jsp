@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="drink" scope="request" type="DAO.Drinks.Drink"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>EditDrink</title>
@@ -44,7 +45,7 @@
                             <label class="col-lg-4 control-label"><fmt:message key='description'/></label>
 
                             <div class="col-lg-8 has-warning">
-                                <textarea class="form-control" rows="3" id="textArea" name="editDescription" placeholder="<fmt:message key='description'/>">${drink.description}</textarea>
+                                <textarea  class="form-control" rows="10" id="textArea" name="editDescription" placeholder="<fmt:message key='description'/>">${drink.description}</textarea>
                             </div>
                         </div>
                         <div class="form-group">

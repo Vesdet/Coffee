@@ -30,7 +30,9 @@
                     <h3 class="panel-title"><fmt:message key='error'/>!!</h3>
                 </div>
                 <div class="panel-body">
-                    <fmt:message key='errorCount.text'/>
+                    <fmt:message key='errorCount.text1'/>
+                    ${title}
+                    <fmt:message key='errorCount.text2'/>
                 </div>
             </div>
         </div>

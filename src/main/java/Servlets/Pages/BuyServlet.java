@@ -35,12 +35,13 @@ public class BuyServlet extends HttpServlet {
 
         AdditivesDAO dao = new AdditivesDAO();
         List<Additive> list = new ArrayList<>();
-        if (!additiveTitle1.equals("Without additive")) {
+
+        if (!additiveTitle1.equals("---")) {
             Additive add1 = dao.getRow(additiveTitle1);
             list.add(add1);
             totalCost += add1.getPrice();
         }
-        if (!additiveTitle2.equals("Without additive")) {
+        if (!additiveTitle1.equals("---")) {
             Additive add2 = dao.getRow(additiveTitle2);
             list.add(add2);
             totalCost += add2.getPrice();
